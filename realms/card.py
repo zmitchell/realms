@@ -89,3 +89,16 @@ class Target(Enum):
     owner = 0
     opponent = 1
 
+
+class CardAction(Enum):
+    """
+    The type of action that an effect entails
+    """
+    attack = 0
+    heal = 1
+    draw = 2
+    scrap = 3
+    acquire = 4
+    discard = 5
+    money = 6
+
