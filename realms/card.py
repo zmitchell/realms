@@ -75,14 +75,14 @@ class Faction(Enum):
         return self.value
 
 
-class Effect(object):
+class CardEffect(object):
     """
     A single effect provided by a card
     """
     pass
 
 
-class Target(Enum):
+class CardTarget(Enum):
     """
     The receiver of an effect from a card
     """
