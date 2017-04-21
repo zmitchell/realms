@@ -15,32 +15,33 @@ class Card(object):
     This class encapsulates the behavior and data of a single card, be it
     a ship or base.
 
-    :param uuid_: unique identifier for the card
-    :param name_: display name of the card
-    :type name_: string
-    :param is_base_: is the card a base
-    :type is_base_: bool
-    :param is_outpost_: if the card is a base, is it an outpost
-    :type is_outpost_: bool
+    :param uuid: unique identifier for the card
+    :type uuid: UUID object
+    :param name: display name of the card
+    :type name: string
+    :param is_base: is the card a base
+    :type is_base: bool
+    :param is_outpost: if the card is a base, is it an outpost
+    :type is_outpost: bool
     :param health: if the card is a base, the damage it can take
     :type health: int
-    :param cost_: cost to buy the card
-    :type cost_: int
-    :param faction_: faction to which the card belongs
-    :type faction_: Faction
-    :param effects_: effect(s) provided by the card
-    :type effects_: list of Effect objects
-    :param ally_ability_: effect provided when at least one other card
+    :param cost: cost to buy the card
+    :type cost: int
+    :param faction: faction to which the card belongs
+    :type faction: CardFaction
+    :param effects: effect(s) provided by the card
+    :type effects: list of CardEffect objects
+    :param ally_ability: effect provided when at least one other card
                           of the same faction is played
-    :type ally_ability_: Effect
-    :param image_: display image for the card
+    :type ally_ability: CardEffect
+    :param image: display image for the card
 
     .. note:: The UUID format has not been determined yet.
     .. note:: The image format has not been determined yet.
     """
 
-    def __init__(self, uuid_, name_, is_base_=False, is_outpost_=False, health_=None,
-                 cost_=None, faction_=None, effects_=None, ally_ability_=None, image_=None):
+    def __init__(self, uuid, name, is_base=False, is_outpost=False, health=None,
+                 cost=None, faction=None, effects=None, ally_ability=None, image=None):
         pass
 
 
