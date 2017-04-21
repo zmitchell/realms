@@ -16,7 +16,7 @@ class Card(object):
     a ship or base.
 
     :param uuid: unique identifier for the card
-    :type uuid: UUID object
+    :type uuid: UUID
     :param name: display name of the card
     :type name: string
     :param is_base: is the card a base
@@ -28,9 +28,9 @@ class Card(object):
     :param cost: cost to buy the card
     :type cost: int
     :param faction: faction to which the card belongs
-    :type faction: CardFaction
+    :type faction: Faction
     :param effects: effect(s) provided by the card
-    :type effects: list of CardEffect objects
+    :type effects: [CardEffect]
     :param ally_ability: effect provided when at least one other card
                           of the same faction is played
     :type ally_ability: CardEffect
@@ -86,9 +86,9 @@ class CardEffect(object):
     (healing, scrapping, etc) or to an opponent (attack, discard, etc).
 
     :param target: The player who should receive the effect of the card
-    :type target: :class:CardTarget
+    :type target: CardTarget
     :param action: The type of action to apply
-    :type action: :class:CardAction
+    :type action: CardAction
     :param value: The value associated with the action
     :type value: int
     """
