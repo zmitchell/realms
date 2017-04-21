@@ -85,7 +85,7 @@ class CardEffect(object):
 
 class CardTarget(Enum):
     """
-    The receiver of an effect from a card
+    The receiver of a card's effect
     """
     owner = 0
     opponent = 1
