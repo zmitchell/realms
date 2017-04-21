@@ -79,8 +79,24 @@ class Faction(Enum):
 class CardEffect(object):
     """
     A single effect provided by a card
+
+    Identifies an action (attack, discard, etc), any values associated
+    with the action (attack damage, number of cards to discard, etc),
+    and whether the action should be applied to the owner of the card
+    (healing, scrapping, etc) or to an opponent (attack, discard, etc).
+
+    :param target: The player who should receive the effect of the card
+    :type target: :class:CardTarget
+    :param action: The type of action to apply
+    :type action: :class:CardAction
+    :param value: The value associated with the action
+    :type value: int
     """
-    pass
+    def __init__(self, target, action, value):
+        self.target = target
+        self.action = action
+        self.value = value
+        return
 
 
 class CardTarget(Enum):
