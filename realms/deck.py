@@ -93,14 +93,13 @@ class PlayerDeck(object):
         """
         pass
 
-    def _make_hand(self, num=5):
+    def draw(self, num=5):
         """
-        Constructs a hand from the specified number of cards
+        Draws the specified number of cards
+
+        :return A list containing the specified number of cards
+        :rtype [Card]
         """
-        if num > 5:
-            num = 5
-        if num < 1:
-            num = 0
         pass
 
     def _scrap(self, card):
