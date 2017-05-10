@@ -54,6 +54,7 @@ class Faction(Enum):
     blob = 'Blob'
     federation = 'Federation'
     machine = 'Machine Cult'
+    allfacs = 'all'
 
     def __str__(self):
         """
@@ -118,4 +119,5 @@ class CardAction(Enum):
     acquire = 4
     discard = 5
     money = 6
+    destroy = 7
 
