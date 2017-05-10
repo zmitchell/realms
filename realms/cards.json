@@ -1,0 +1,1333 @@
+[{
+    "name": "Scout",
+    "faction": "Unaligned",
+    "simplified": "false",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 0,
+    "effects": [
+        {
+            "target": "owner",
+            "action": "attack",
+            "value": 1,
+            "condition": {}
+        }
+    ],
+    "ally": [],
+    "scrap": []
+},
+{   
+    "name": "Viper",
+    "faction": "Unaligned",
+    "simplified": "false",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 0,
+    "effects": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "ally": [],
+    "scrap": []
+},
+{
+    "name": "Explorer",
+    "faction": "Unaligned",
+    "simplified": "false",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 0,
+    "effects": [
+        {
+            "target": "owner",
+            "action": "money",
+            "value": 2,
+            "condition": {}       
+        }
+    ],
+    "ally": [],
+    "scrap": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 2,
+            "condition": {}       
+        }
+    ]
+},
+{
+    "name": "Blob Fighter",
+    "faction": "Blob",
+    "simplified": "false",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 1,
+    "effects": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 3,
+            "condition": {}
+        }
+    ],
+    "ally": [
+               {
+            "target": "owner",
+            "action": "draw",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "scrap": []
+},
+{
+    "name": "Battle Pod",
+    "faction": "Blob",
+    "simplified": "false",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 2,
+    "effects": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 4,
+            "condition": {}       
+        }
+    ],
+    "ally": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 2,
+            "condition": {}       
+        }
+    ],
+    "scrap": []
+},
+{
+    "name": "Trade Pod",
+    "faction": "Blob",
+    "simplified": "false",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 2,
+    "effects": [
+        {
+            "target": "owner",
+            "action": "money",
+            "value": 3,
+            "condition": {}       
+        }
+    ],
+    "ally": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 2,
+            "condition": {}       
+        }
+    ],
+    "scrap": []
+},
+{
+    "name": "Blob Wheel",
+    "faction": "Blob",
+    "simplified": "false",
+    "base": "true",
+    "outpost": "false",
+    "defense": 5,
+    "cost": 3,
+    "effects": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "ally": [],
+    "scrap": [
+        {
+            "target": "owner",
+            "action": "money",
+            "value": 3,
+            "condition": {}       
+        }
+    ]
+},
+{
+    "name": "Ram",
+    "faction": "Blob",
+    "simplified": "false",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 3,
+    "effects": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 5,
+            "condition": {}       
+        }
+    ],
+    "ally": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 2,
+            "condition": {}       
+        }
+    ],
+    "scrap": [
+        {
+            "target": "owner",
+            "action": "money",
+            "value": 3,
+            "condition": {}       
+        }
+    ]
+},
+{
+    "name": "Blob Destroyer",
+    "faction": "Blob",
+    "simplified": "true",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 4,
+    "effects": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 6,
+            "condition": {}       
+        }
+    ],
+    "ally": [],
+    "scrap": []
+},
+{
+    "name": "The Hive",
+    "faction": "Blob",
+    "simplified": "false",
+    "base": "true",
+    "outpost": "false",
+    "defense": 5,
+    "cost": 5,
+    "effects": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 3,
+            "condition": {}       
+        }
+    ],
+    "ally": [
+        {
+            "target": "owner",
+            "action": "draw",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "scrap": []
+},
+{
+    "name": "Battle Blob",
+    "faction": "Blob",
+    "simplified": "false",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 6,
+    "effects": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 8,
+            "condition": {}       
+        }
+    ],
+    "ally": [
+        {
+            "target": "owner",
+            "action": "draw",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "scrap": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 4,
+            "condition": {}       
+        }
+    ]
+},
+{
+    "name": "Blob Carrier",
+    "faction": "Blob",
+    "simplified": "false",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 6,
+    "effects": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 7,
+            "condition": {}       
+        }
+    ],
+    "ally": [
+        {
+            "target": "owner",
+            "action": "acquire",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "scrap": []
+},
+{
+    "name": "Mothership",
+    "faction": "Blob",
+    "simplified": "false",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 7,
+    "effects": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 6,
+            "condition": {}       
+        },
+        {
+            "target": "owner",
+            "action": "draw",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "ally": [
+        {
+            "target": "owner",
+            "action": "draw",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "scrap": []
+},
+{
+    "name": "Blob World",
+    "faction": "Blob",
+    "simplified": "false",
+    "base": "true",
+    "outpost": "false",
+    "defense": 7,
+    "cost": 8,
+    "effects": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 5,
+            "condition": {}       
+        }
+    ],
+    "ally": [],
+    "scrap": []
+},
+{
+    "name": "Federation Shuttle",
+    "faction": "Federation",
+    "simplified": "false",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 1,
+    "effects": [
+        {
+            "target": "owner",
+            "action": "money",
+            "value": 2,
+            "condition": {}       
+        }
+    ],
+    "ally": [
+        {
+            "target": "owner",
+            "action": "heal",
+            "value": 4,
+            "condition": {}       
+        }
+    ],
+    "scrap": []
+},
+{
+    "name": "Cutter",
+    "faction": "Federation",
+    "simplified": "false",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 2,
+    "effects": [
+        {
+            "target": "owner",
+            "action": "heal",
+            "value": 4,
+            "condition": {}       
+        }
+    ],
+    "ally": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 4,
+            "condition": {}       
+        },
+        {
+            "target": "owner",
+            "action": "money",
+            "value": 2,
+            "condition": {}       
+        }
+    ],
+    "scrap": []
+},
+{
+    "name": "Embassy Yacht",
+    "faction": "Federation",
+    "simplified": "true",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 3,
+    "effects": [
+        {
+            "target": "owner",
+            "action": "heal",
+            "value": 3,
+            "condition": {}       
+        },
+        {
+            "target": "owner",
+            "action": "money",
+            "value": 2,
+            "condition": {}       
+        }
+    ],
+    "ally": [],
+    "scrap": []
+},
+{
+    "name": "Trading Post",
+    "faction": "Federation",
+    "simplified": "true",
+    "base": "true",
+    "outpost": "true",
+    "defense": 4,
+    "cost": 3,
+    "effects": [
+        {
+            "target": "owner",
+            "action": "money",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "ally": [],
+    "scrap": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 5,
+            "condition": {}       
+        }
+    ]
+},
+{
+    "name": "Barter World",
+    "faction": "Federation",
+    "simplified": "true",
+    "base": "true",
+    "outpost": "false",
+    "defense": 4,
+    "cost": 4,
+    "effects": [
+        {
+            "target": "owner",
+            "action": "money",
+            "value": 2,
+            "condition": {}       
+        }
+    ],
+    "ally": [],
+    "scrap": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 5,
+            "condition": {}       
+        }
+    ]
+},
+{
+    "name": "Freighter",
+    "faction": "Federation",
+    "simplified": "true",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 4,
+    "effects": [
+        {
+            "target": "owner",
+            "action": "money",
+            "value": 4,
+            "condition": {}       
+        }
+    ],
+    "ally": [],
+    "scrap": []
+},
+{
+    "name": "Defense Center",
+    "faction": "Federation",
+    "simplified": "true",
+    "base": "true",
+    "outpost": "true",
+    "defense": 5,
+    "cost": 5,
+    "effects": [
+        {
+            "target": "owner",
+            "action": "heal",
+            "value": 3,
+            "condition": {}       
+        }
+    ],
+    "ally": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 2,
+            "condition": {}       
+        }
+    ],
+    "scrap": []
+},
+{
+    "name": "Trade Escort",
+    "faction": "Federation",
+    "simplified": "false",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 5,
+    "effects": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 4,
+            "condition": {}       
+        },
+        {
+            "target": "owner",
+            "action": "heal",
+            "value": 4,
+            "condition": {}       
+        }
+    ],
+    "ally": [
+        {
+            "target": "owner",
+            "action": "draw",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "scrap": []
+},
+{
+    "name": "Flagship",
+    "faction": "Federation",
+    "simplified": "false",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 6,
+    "effects": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 5,
+            "condition": {}       
+        }
+    ],
+    "ally": [
+        {
+            "target": "owner",
+            "action": "heal",
+            "value": 5,
+            "condition": {}       
+        },
+        {
+            "target": "owner",
+            "action": "draw",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "scrap": []
+},
+{
+    "name": "Port of Call",
+    "faction": "Federation",
+    "simplified": "false",
+    "base": "true",
+    "outpost": "true",
+    "defense": 6,
+    "cost": 6,
+    "effects": [
+        {
+            "target": "owner",
+            "action": "money",
+            "value": 3,
+            "condition": {}       
+        }
+    ],
+    "ally": [],
+    "scrap": [
+        {
+            "target": "owner",
+            "action": "draw",
+            "value": 1,
+            "condition": {}       
+        },
+        {
+            "target": "opponent",
+            "action": "destroy",
+            "value": 1,
+            "condition": {}       
+        }
+    ]
+},
+{
+    "name": "Central Office",
+    "faction": "Federation",
+    "simplified": "true",
+    "base": "true",
+    "outpost": "false",
+    "defense": 6,
+    "cost": 7,
+    "effects": [
+        {
+            "target": "owner",
+            "action": "money",
+            "value": 2,
+            "condition": {}       
+        }
+    ],
+    "ally": [
+        {
+            "target": "owner",
+            "action": "draw",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "scrap": []
+},
+{
+    "name": "Command Ship",
+    "faction": "Federation",
+    "simplified": "false",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 8,
+    "effects": [
+        {
+            "target": "owner",
+            "action": "heal",
+            "value": 4,
+            "condition": {}       
+        },
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 5,
+            "condition": {}       
+        },
+        {
+            "target": "owner",
+            "action": "draw",
+            "value": 2,
+            "condition": {}       
+        }
+    ],
+    "ally": [
+        {
+            "target": "opponent",
+            "action": "destroy",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "scrap": []
+},
+{
+    "name": "Trade Bot",
+    "faction": "Machine Cult",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 1,
+    "effects": [
+        {
+            "target": "owner",
+            "action": "money",
+            "value": 1,
+            "condition": {}       
+        },
+        {
+            "target": "owner",
+            "action": "scrap",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "ally": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 2,
+            "condition": {}       
+        }
+    ],
+    "scrap": []
+},
+{
+    "name": "Missile Bot",
+    "faction": "Machine Cult",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 2,
+    "effects": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 2,
+            "condition": {}       
+        },
+        {
+            "target": "owner",
+            "action": "scrap",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "ally": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 2,
+            "condition": {}       
+        }
+    ],
+    "scrap": []
+},
+{
+    "name": "Battle Station",
+    "faction": "Machine Cult",
+    "base": "true",
+    "outpost": "true",
+    "defense": 5,
+    "cost": 3,
+    "effects": [
+
+    ],
+    "ally": [],
+    "scrap": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 5,
+            "condition": {}       
+        }
+    ]
+},
+{
+    "name": "Supply Bot",
+    "faction": "Machine Cult",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 3,
+    "effects": [
+        {
+            "target": "owner",
+            "action": "money",
+            "value": 2,
+            "condition": {}       
+        },
+        {
+            "target": "owner",
+            "action": "scrap",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "ally": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 2,
+            "condition": {}       
+        }
+    ],
+    "scrap": []
+},
+{
+    "name": "Patrol Mech",
+    "faction": "Machine Cult",
+    "simplified": "true",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 4,
+    "effects": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 5,
+            "condition": {}       
+        }
+    ],
+    "ally": [
+        {
+            "target": "owner",
+            "action": "scrap",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "scrap": []
+},
+{
+    "name": "Battle Mech",
+    "faction": "Machine Cult",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 5,
+    "effects": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 4,
+            "condition": {}       
+        },
+        {
+            "target": "owner",
+            "action": "scrap",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "ally": [
+        {
+            "target": "owner",
+            "action": "draw",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "scrap": []
+},
+{
+    "name": "Mech World",
+    "faction": "All",
+    "simplified": "false",
+    "base": "true",
+    "outpost": "true",
+    "defense": 6,
+    "cost": 5,
+    "effects": [],
+    "ally": [],
+    "scrap": []
+},
+{
+    "name": "Junkyard",
+    "faction": "Machine Cult",
+    "base": "true",
+    "outpost": "true",
+    "defense": 5,
+    "cost": 6,
+    "effects": [
+        {
+            "target": "owner",
+            "action": "scrap",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "ally": [],
+    "scrap": []
+},
+{
+    "name": "Missile Mech",
+    "faction": "Machine Cult",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 6,
+    "effects": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 6,
+            "condition": {}       
+        },
+        {
+            "target": "opponent",
+            "action": "destroy",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "ally": [
+        {
+            "target": "owner",
+            "action": "draw",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "scrap": []
+},
+{
+    "name": "Machine Base",
+    "faction": "Machine Cult",
+    "simplified": "true",
+    "base": "true",
+    "outpost": "true",
+    "defense": 6,
+    "cost": 7,
+    "effects": [
+        {
+            "target": "owner",
+            "action": "draw",
+            "value": 1,
+            "condition": {}       
+        },
+        {
+            "target": "owner",
+            "action": "scrap",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "ally": [],
+    "scrap": []
+},
+{
+    "name": "Brain World",
+    "faction": "Machine Cult",
+    "simplified": "true",
+    "base": "true",
+    "outpost": "true",
+    "defense": 6,
+    "cost": 8,
+    "effects": [
+        {
+            "target": "owner",
+            "action": "scrap",
+            "value": 1,
+            "condition": {}       
+        },
+        {
+            "target": "owner",
+            "action": "draw",
+            "value": 1,
+            "condition": {}       
+        },
+        {
+            "target": "owner",
+            "action": "scrap",
+            "value": 1,
+            "condition": {}       
+        },
+        {
+            "target": "owner",
+            "action": "draw",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "ally": [],
+    "scrap": []
+},
+{
+    "name": "Imperial Fighter",
+    "faction": "Star Empire",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 1,
+    "effects": [
+        {
+            "target": "opponent",
+            "action": "discard",
+            "value": 1,
+            "condition": {}       
+        },
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 2,
+            "condition": {}       
+        }
+    ],
+    "ally": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 2,
+            "condition": {}       
+        }
+    ],
+    "scrap": []
+},
+{
+    "name": "Corvette",
+    "faction": "Star Empire",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 2,
+    "effects": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 1,
+            "condition": {}       
+        },
+        {
+            "target": "owner",
+            "action": "draw",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "ally": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 2,
+            "condition": {}       
+        }
+    ],
+    "scrap": []
+},
+{
+    "name": "Imperial Frigate",
+    "faction": "Star Empire",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 3,
+    "effects": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 4,
+            "condition": {}       
+        },
+        {
+            "target": "opponent",
+            "action": "discard",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "ally": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 2,
+            "condition": {}       
+        }
+    ],
+    "scrap": [
+        {
+            "target": "owner",
+            "action": "draw",
+            "value": 1,
+            "condition": {}       
+        }
+    ]
+},
+{
+    "name": "Survey Ship",
+    "faction": "Star Empire",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 3,
+    "effects": [
+        {
+            "target": "owner",
+            "action": "draw",
+            "value": 1,
+            "condition": {}       
+        },
+        {
+            "target": "owner",
+            "action": "money",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "ally": [],
+    "scrap": [
+        {
+            "target": "opponent",
+            "action": "discard",
+            "value": 1,
+            "condition": {}       
+        }
+    ]
+},
+{
+    "name": "Recycling Station",
+    "faction": "Star Empire",
+    "simplified": "true",
+    "base": "true",
+    "outpost": "true",
+    "defense": 4,
+    "cost": 4,
+    "effects": [
+        {
+            "target": "owner",
+            "action": "discard",
+            "value": 1,
+            "condition": {}       
+        },
+        {
+            "target": "owner",
+            "action": "draw",
+            "value": 1,
+            "condition": {}       
+        },
+        {
+            "target": "owner",
+            "action": "discard",
+            "value": 1,
+            "condition": {}       
+        },
+        {
+            "target": "owner",
+            "action": "draw",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "ally": [],
+    "scrap": []
+},
+{
+    "name": "Space Station",
+    "faction": "Star Empire",
+    "base": "true",
+    "outpost": "true",
+    "defense": 4,
+    "cost": 4,
+    "effects": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 2,
+            "condition": {}       
+        }
+    ],
+    "ally": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 2,
+            "condition": {}       
+        }
+    ],
+    "scrap": [
+        {
+            "target": "owner",
+            "action": "money",
+            "value": 4,
+            "condition": {}       
+        }
+    ]
+},
+{
+    "name": "War World",
+    "faction": "Star Empire",
+    "base": "true",
+    "outpost": "true",
+    "defense": 4,
+    "cost": 5,
+    "effects": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 3,
+            "condition": {}       
+        }
+    ],
+    "ally": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 4,
+            "condition": {}       
+        }
+    ],
+    "scrap": []
+},
+{
+    "name": "Battle Cruiser",
+    "faction": "Star Empire",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 6,
+    "effects": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 5,
+            "condition": {}       
+        },
+        {
+            "target": "owner",
+            "action": "draw",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "ally": [
+        {
+            "target": "opponent",
+            "action": "discard",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "scrap": [
+        {
+            "target": "owner",
+            "action": "draw",
+            "value": 1,
+            "condition": {}       
+        },
+        {
+            "target": "opponent",
+            "action": "destroy",
+            "value": 1,
+            "condition": {}       
+        }
+    ]
+},
+{
+    "name": "Royal Reboubt",
+    "faction": "Star Empire",
+    "base": "true",
+    "outpost": "true",
+    "defense": 6,
+    "cost": 6,
+    "effects": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 3,
+            "condition": {}       
+        }
+    ],
+    "ally": [
+        {
+            "target": "opponent",
+            "action": "discard",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "scrap": []
+},
+{
+    "name": "Dreadnaught",
+    "faction": "Star Empire",
+    "base": "false",
+    "outpost": "false",
+    "defense": 0,
+    "cost": 7,
+    "effects": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 7,
+            "condition": {}       
+        },
+        {
+            "target": "owner",
+            "action": "draw",
+            "value": 1,
+            "condition": {}       
+        }
+    ],
+    "ally": [],
+    "scrap": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 5,
+            "condition": {}       
+        }
+    ]
+},
+{
+    "name": "Fleet HQ",
+    "faction": "Star Empire",
+    "simplified": "true",
+    "base": "true",
+    "outpost": "false",
+    "defense": 8,
+    "cost": 8,
+    "effects": [
+        {
+            "target": "opponent",
+            "action": "attack",
+            "value": 5,
+            "condition": {}       
+        }
+    ],
+    "ally": [],
+    "scrap": []
+}]
