@@ -6,6 +6,7 @@
     "outpost": "false",
     "defense": 0,
     "cost": 0,
+    "count": 0,
     "effects": [
         {
             "target": "owner",
@@ -17,7 +18,7 @@
     "ally": [],
     "scrap": []
 },
-{   
+{
     "name": "Viper",
     "faction": "Unaligned",
     "simplified": "false",
@@ -25,12 +26,13 @@
     "outpost": "false",
     "defense": 0,
     "cost": 0,
+    "count": 0,
     "effects": [
         {
             "target": "opponent",
             "action": "attack",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [],
@@ -44,12 +46,13 @@
     "outpost": "false",
     "defense": 0,
     "cost": 0,
+    "count": 0,
     "effects": [
         {
             "target": "owner",
             "action": "money",
             "value": 2,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [],
@@ -58,7 +61,7 @@
             "target": "opponent",
             "action": "attack",
             "value": 2,
-            "condition": {}       
+            "condition": {}
         }
     ]
 },
@@ -70,6 +73,7 @@
     "outpost": "false",
     "defense": 0,
     "cost": 1,
+    "count": 3,
     "effects": [
         {
             "target": "opponent",
@@ -83,7 +87,7 @@
             "target": "owner",
             "action": "draw",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "scrap": []
@@ -96,12 +100,13 @@
     "outpost": "false",
     "defense": 0,
     "cost": 2,
+    "count": 2,
     "effects": [
         {
             "target": "opponent",
             "action": "attack",
             "value": 4,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [
@@ -109,7 +114,7 @@
             "target": "opponent",
             "action": "attack",
             "value": 2,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "scrap": []
@@ -122,12 +127,13 @@
     "outpost": "false",
     "defense": 0,
     "cost": 2,
+    "count": 3,
     "effects": [
         {
             "target": "owner",
             "action": "money",
             "value": 3,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [
@@ -135,7 +141,7 @@
             "target": "opponent",
             "action": "attack",
             "value": 2,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "scrap": []
@@ -148,12 +154,13 @@
     "outpost": "false",
     "defense": 5,
     "cost": 3,
+    "count": 3,
     "effects": [
         {
             "target": "opponent",
             "action": "attack",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [],
@@ -162,7 +169,7 @@
             "target": "owner",
             "action": "money",
             "value": 3,
-            "condition": {}       
+            "condition": {}
         }
     ]
 },
@@ -174,12 +181,13 @@
     "outpost": "false",
     "defense": 0,
     "cost": 3,
+    "count": 2,
     "effects": [
         {
             "target": "opponent",
             "action": "attack",
             "value": 5,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [
@@ -187,7 +195,7 @@
             "target": "opponent",
             "action": "attack",
             "value": 2,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "scrap": [
@@ -195,7 +203,7 @@
             "target": "owner",
             "action": "money",
             "value": 3,
-            "condition": {}       
+            "condition": {}
         }
     ]
 },
@@ -207,12 +215,13 @@
     "outpost": "false",
     "defense": 0,
     "cost": 4,
+    "count": 2,
     "effects": [
         {
             "target": "opponent",
             "action": "attack",
             "value": 6,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [],
@@ -226,12 +235,13 @@
     "outpost": "false",
     "defense": 5,
     "cost": 5,
+    "count": 1,
     "effects": [
         {
             "target": "opponent",
             "action": "attack",
             "value": 3,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [
@@ -239,7 +249,7 @@
             "target": "owner",
             "action": "draw",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "scrap": []
@@ -252,12 +262,13 @@
     "outpost": "false",
     "defense": 0,
     "cost": 6,
+    "count": 1,
     "effects": [
         {
             "target": "opponent",
             "action": "attack",
             "value": 8,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [
@@ -265,7 +276,7 @@
             "target": "owner",
             "action": "draw",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "scrap": [
@@ -273,7 +284,7 @@
             "target": "opponent",
             "action": "attack",
             "value": 4,
-            "condition": {}       
+            "condition": {}
         }
     ]
 },
@@ -285,12 +296,13 @@
     "outpost": "false",
     "defense": 0,
     "cost": 6,
+    "count": 1,
     "effects": [
         {
             "target": "opponent",
             "action": "attack",
             "value": 7,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [
@@ -298,7 +310,7 @@
             "target": "owner",
             "action": "acquire",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "scrap": []
@@ -311,18 +323,19 @@
     "outpost": "false",
     "defense": 0,
     "cost": 7,
+    "count": 1,
     "effects": [
         {
             "target": "opponent",
             "action": "attack",
             "value": 6,
-            "condition": {}       
+            "condition": {}
         },
         {
             "target": "owner",
             "action": "draw",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [
@@ -330,7 +343,7 @@
             "target": "owner",
             "action": "draw",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "scrap": []
@@ -343,12 +356,13 @@
     "outpost": "false",
     "defense": 7,
     "cost": 8,
+    "count": 1,
     "effects": [
         {
             "target": "opponent",
             "action": "attack",
             "value": 5,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [],
@@ -362,12 +376,13 @@
     "outpost": "false",
     "defense": 0,
     "cost": 1,
+    "count": 3,
     "effects": [
         {
             "target": "owner",
             "action": "money",
             "value": 2,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [
@@ -375,7 +390,7 @@
             "target": "owner",
             "action": "heal",
             "value": 4,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "scrap": []
@@ -388,12 +403,13 @@
     "outpost": "false",
     "defense": 0,
     "cost": 2,
+    "count": 3,
     "effects": [
         {
             "target": "owner",
             "action": "heal",
             "value": 4,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [
@@ -401,13 +417,13 @@
             "target": "opponent",
             "action": "attack",
             "value": 4,
-            "condition": {}       
+            "condition": {}
         },
         {
             "target": "owner",
             "action": "money",
             "value": 2,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "scrap": []
@@ -420,18 +436,19 @@
     "outpost": "false",
     "defense": 0,
     "cost": 3,
+    "count": 2,
     "effects": [
         {
             "target": "owner",
             "action": "heal",
             "value": 3,
-            "condition": {}       
+            "condition": {}
         },
         {
             "target": "owner",
             "action": "money",
             "value": 2,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [],
@@ -445,12 +462,13 @@
     "outpost": "true",
     "defense": 4,
     "cost": 3,
+    "count": 2,
     "effects": [
         {
             "target": "owner",
             "action": "money",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [],
@@ -459,7 +477,7 @@
             "target": "opponent",
             "action": "attack",
             "value": 5,
-            "condition": {}       
+            "condition": {}
         }
     ]
 },
@@ -471,12 +489,13 @@
     "outpost": "false",
     "defense": 4,
     "cost": 4,
+    "count": 2,
     "effects": [
         {
             "target": "owner",
             "action": "money",
             "value": 2,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [],
@@ -485,7 +504,7 @@
             "target": "opponent",
             "action": "attack",
             "value": 5,
-            "condition": {}       
+            "condition": {}
         }
     ]
 },
@@ -497,12 +516,13 @@
     "outpost": "false",
     "defense": 0,
     "cost": 4,
+    "count": 2,
     "effects": [
         {
             "target": "owner",
             "action": "money",
             "value": 4,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [],
@@ -516,12 +536,13 @@
     "outpost": "true",
     "defense": 5,
     "cost": 5,
+    "count": 1,
     "effects": [
         {
             "target": "owner",
             "action": "heal",
             "value": 3,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [
@@ -529,7 +550,7 @@
             "target": "opponent",
             "action": "attack",
             "value": 2,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "scrap": []
@@ -542,18 +563,19 @@
     "outpost": "false",
     "defense": 0,
     "cost": 5,
+    "count": 1,
     "effects": [
         {
             "target": "opponent",
             "action": "attack",
             "value": 4,
-            "condition": {}       
+            "condition": {}
         },
         {
             "target": "owner",
             "action": "heal",
             "value": 4,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [
@@ -561,7 +583,7 @@
             "target": "owner",
             "action": "draw",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "scrap": []
@@ -574,12 +596,13 @@
     "outpost": "false",
     "defense": 0,
     "cost": 6,
+    "count": 1,
     "effects": [
         {
             "target": "opponent",
             "action": "attack",
             "value": 5,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [
@@ -587,13 +610,13 @@
             "target": "owner",
             "action": "heal",
             "value": 5,
-            "condition": {}       
+            "condition": {}
         },
         {
             "target": "owner",
             "action": "draw",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "scrap": []
@@ -606,12 +629,13 @@
     "outpost": "true",
     "defense": 6,
     "cost": 6,
+    "count": 1,
     "effects": [
         {
             "target": "owner",
             "action": "money",
             "value": 3,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [],
@@ -620,13 +644,13 @@
             "target": "owner",
             "action": "draw",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         },
         {
             "target": "opponent",
             "action": "destroy",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ]
 },
@@ -638,12 +662,13 @@
     "outpost": "false",
     "defense": 6,
     "cost": 7,
+    "count": 1,
     "effects": [
         {
             "target": "owner",
             "action": "money",
             "value": 2,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [
@@ -651,7 +676,7 @@
             "target": "owner",
             "action": "draw",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "scrap": []
@@ -664,24 +689,25 @@
     "outpost": "false",
     "defense": 0,
     "cost": 8,
+    "count": 1,
     "effects": [
         {
             "target": "owner",
             "action": "heal",
             "value": 4,
-            "condition": {}       
+            "condition": {}
         },
         {
             "target": "opponent",
             "action": "attack",
             "value": 5,
-            "condition": {}       
+            "condition": {}
         },
         {
             "target": "owner",
             "action": "draw",
             "value": 2,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [
@@ -689,7 +715,7 @@
             "target": "opponent",
             "action": "destroy",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "scrap": []
@@ -697,22 +723,24 @@
 {
     "name": "Trade Bot",
     "faction": "Machine Cult",
+    "simplified": "false",
     "base": "false",
     "outpost": "false",
     "defense": 0,
     "cost": 1,
+    "count": 3,
     "effects": [
         {
             "target": "owner",
             "action": "money",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         },
         {
             "target": "owner",
             "action": "scrap",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [
@@ -720,7 +748,7 @@
             "target": "opponent",
             "action": "attack",
             "value": 2,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "scrap": []
@@ -728,22 +756,24 @@
 {
     "name": "Missile Bot",
     "faction": "Machine Cult",
+    "simplified": "false",
     "base": "false",
     "outpost": "false",
     "defense": 0,
     "cost": 2,
+    "count": 3,
     "effects": [
         {
             "target": "opponent",
             "action": "attack",
             "value": 2,
-            "condition": {}       
+            "condition": {}
         },
         {
             "target": "owner",
             "action": "scrap",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [
@@ -751,7 +781,7 @@
             "target": "opponent",
             "action": "attack",
             "value": 2,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "scrap": []
@@ -759,42 +789,44 @@
 {
     "name": "Battle Station",
     "faction": "Machine Cult",
+    "simplified": "false",
     "base": "true",
     "outpost": "true",
     "defense": 5,
     "cost": 3,
-    "effects": [
-
-    ],
+    "count": 2,
+    "effects": [],
     "ally": [],
     "scrap": [
         {
             "target": "opponent",
             "action": "attack",
             "value": 5,
-            "condition": {}       
+            "condition": {}
         }
     ]
 },
 {
     "name": "Supply Bot",
     "faction": "Machine Cult",
+    "simplified": "false",
     "base": "false",
     "outpost": "false",
     "defense": 0,
     "cost": 3,
+    "count": 3,
     "effects": [
         {
             "target": "owner",
             "action": "money",
             "value": 2,
-            "condition": {}       
+            "condition": {}
         },
         {
             "target": "owner",
             "action": "scrap",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [
@@ -802,7 +834,7 @@
             "target": "opponent",
             "action": "attack",
             "value": 2,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "scrap": []
@@ -815,12 +847,13 @@
     "outpost": "false",
     "defense": 0,
     "cost": 4,
+    "count": 2,
     "effects": [
         {
             "target": "opponent",
             "action": "attack",
             "value": 5,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [
@@ -828,7 +861,7 @@
             "target": "owner",
             "action": "scrap",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "scrap": []
@@ -836,22 +869,24 @@
 {
     "name": "Battle Mech",
     "faction": "Machine Cult",
+    "simplified": "false",
     "base": "false",
     "outpost": "false",
     "defense": 0,
     "cost": 5,
+    "count": 1,
     "effects": [
         {
             "target": "opponent",
             "action": "attack",
             "value": 4,
-            "condition": {}       
+            "condition": {}
         },
         {
             "target": "owner",
             "action": "scrap",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [
@@ -859,7 +894,7 @@
             "target": "owner",
             "action": "draw",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "scrap": []
@@ -872,6 +907,7 @@
     "outpost": "true",
     "defense": 6,
     "cost": 5,
+    "count": 1,
     "effects": [],
     "ally": [],
     "scrap": []
@@ -879,16 +915,18 @@
 {
     "name": "Junkyard",
     "faction": "Machine Cult",
+    "simplified": "false",
     "base": "true",
     "outpost": "true",
     "defense": 5,
     "cost": 6,
+    "count": 1,
     "effects": [
         {
             "target": "owner",
             "action": "scrap",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [],
@@ -897,22 +935,24 @@
 {
     "name": "Missile Mech",
     "faction": "Machine Cult",
+    "simplified": "false",
     "base": "false",
     "outpost": "false",
     "defense": 0,
     "cost": 6,
+    "count": 1,
     "effects": [
         {
             "target": "opponent",
             "action": "attack",
             "value": 6,
-            "condition": {}       
+            "condition": {}
         },
         {
             "target": "opponent",
             "action": "destroy",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [
@@ -920,7 +960,7 @@
             "target": "owner",
             "action": "draw",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "scrap": []
@@ -933,18 +973,19 @@
     "outpost": "true",
     "defense": 6,
     "cost": 7,
+    "count": 1,
     "effects": [
         {
             "target": "owner",
             "action": "draw",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         },
         {
             "target": "owner",
             "action": "scrap",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [],
@@ -958,30 +999,31 @@
     "outpost": "true",
     "defense": 6,
     "cost": 8,
+    "count": 1,
     "effects": [
         {
             "target": "owner",
             "action": "scrap",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         },
         {
             "target": "owner",
             "action": "draw",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         },
         {
             "target": "owner",
             "action": "scrap",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         },
         {
             "target": "owner",
             "action": "draw",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [],
@@ -990,22 +1032,24 @@
 {
     "name": "Imperial Fighter",
     "faction": "Star Empire",
+    "simplified": "false",
     "base": "false",
     "outpost": "false",
     "defense": 0,
     "cost": 1,
+    "count": 3,
     "effects": [
         {
             "target": "opponent",
             "action": "discard",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         },
         {
             "target": "opponent",
             "action": "attack",
             "value": 2,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [
@@ -1013,7 +1057,7 @@
             "target": "opponent",
             "action": "attack",
             "value": 2,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "scrap": []
@@ -1021,22 +1065,24 @@
 {
     "name": "Corvette",
     "faction": "Star Empire",
+    "simplified": "false",
     "base": "false",
     "outpost": "false",
     "defense": 0,
     "cost": 2,
+    "count": 2,
     "effects": [
         {
             "target": "opponent",
             "action": "attack",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         },
         {
             "target": "owner",
             "action": "draw",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [
@@ -1044,7 +1090,7 @@
             "target": "opponent",
             "action": "attack",
             "value": 2,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "scrap": []
@@ -1052,22 +1098,24 @@
 {
     "name": "Imperial Frigate",
     "faction": "Star Empire",
+    "simplified": "false",
     "base": "false",
     "outpost": "false",
     "defense": 0,
     "cost": 3,
+    "count": 3,
     "effects": [
         {
             "target": "opponent",
             "action": "attack",
             "value": 4,
-            "condition": {}       
+            "condition": {}
         },
         {
             "target": "opponent",
             "action": "discard",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [
@@ -1075,7 +1123,7 @@
             "target": "opponent",
             "action": "attack",
             "value": 2,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "scrap": [
@@ -1083,29 +1131,31 @@
             "target": "owner",
             "action": "draw",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ]
 },
 {
     "name": "Survey Ship",
     "faction": "Star Empire",
+    "simplified": "false",
     "base": "false",
     "outpost": "false",
     "defense": 0,
     "cost": 3,
+    "count": 3,
     "effects": [
         {
             "target": "owner",
             "action": "draw",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         },
         {
             "target": "owner",
             "action": "money",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [],
@@ -1114,7 +1164,7 @@
             "target": "opponent",
             "action": "discard",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ]
 },
@@ -1126,30 +1176,31 @@
     "outpost": "true",
     "defense": 4,
     "cost": 4,
+    "count": 2,
     "effects": [
         {
             "target": "owner",
             "action": "discard",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         },
         {
             "target": "owner",
             "action": "draw",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         },
         {
             "target": "owner",
             "action": "discard",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         },
         {
             "target": "owner",
             "action": "draw",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [],
@@ -1158,16 +1209,18 @@
 {
     "name": "Space Station",
     "faction": "Star Empire",
+    "simplified": "false",
     "base": "true",
     "outpost": "true",
     "defense": 4,
     "cost": 4,
+    "count": 2,
     "effects": [
         {
             "target": "opponent",
             "action": "attack",
             "value": 2,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [
@@ -1175,7 +1228,7 @@
             "target": "opponent",
             "action": "attack",
             "value": 2,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "scrap": [
@@ -1183,23 +1236,25 @@
             "target": "owner",
             "action": "money",
             "value": 4,
-            "condition": {}       
+            "condition": {}
         }
     ]
 },
 {
     "name": "War World",
     "faction": "Star Empire",
+    "simplified": "false",
     "base": "true",
     "outpost": "true",
     "defense": 4,
     "cost": 5,
+    "count": 1,
     "effects": [
         {
             "target": "opponent",
             "action": "attack",
             "value": 3,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [
@@ -1207,7 +1262,7 @@
             "target": "opponent",
             "action": "attack",
             "value": 4,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "scrap": []
@@ -1215,22 +1270,24 @@
 {
     "name": "Battle Cruiser",
     "faction": "Star Empire",
+    "simplified": "false",
     "base": "false",
     "outpost": "false",
     "defense": 0,
     "cost": 6,
+    "count": 1,
     "effects": [
         {
             "target": "opponent",
             "action": "attack",
             "value": 5,
-            "condition": {}       
+            "condition": {}
         },
         {
             "target": "owner",
             "action": "draw",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [
@@ -1238,7 +1295,7 @@
             "target": "opponent",
             "action": "discard",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "scrap": [
@@ -1246,29 +1303,31 @@
             "target": "owner",
             "action": "draw",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         },
         {
             "target": "opponent",
             "action": "destroy",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ]
 },
 {
     "name": "Royal Reboubt",
     "faction": "Star Empire",
+    "simplified": "false",
     "base": "true",
     "outpost": "true",
     "defense": 6,
     "cost": 6,
+    "count": 1,
     "effects": [
         {
             "target": "opponent",
             "action": "attack",
             "value": 3,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [
@@ -1276,7 +1335,7 @@
             "target": "opponent",
             "action": "discard",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "scrap": []
@@ -1284,22 +1343,24 @@
 {
     "name": "Dreadnaught",
     "faction": "Star Empire",
+    "simplified": "false",
     "base": "false",
     "outpost": "false",
     "defense": 0,
     "cost": 7,
+    "count": 1,
     "effects": [
         {
             "target": "opponent",
             "action": "attack",
             "value": 7,
-            "condition": {}       
+            "condition": {}
         },
         {
             "target": "owner",
             "action": "draw",
             "value": 1,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [],
@@ -1308,7 +1369,7 @@
             "target": "opponent",
             "action": "attack",
             "value": 5,
-            "condition": {}       
+            "condition": {}
         }
     ]
 },
@@ -1320,12 +1381,13 @@
     "outpost": "false",
     "defense": 8,
     "cost": 8,
+    "count": 1,
     "effects": [
         {
             "target": "opponent",
             "action": "attack",
             "value": 5,
-            "condition": {}       
+            "condition": {}
         }
     ],
     "ally": [],
