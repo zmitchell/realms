@@ -90,3 +90,5 @@ ENV/
 *.sublime-project
 
 \.idea/
+
+realms/realms-cards\.sqlite
