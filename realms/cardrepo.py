@@ -6,8 +6,6 @@
 """
 
 from pony.orm import *
-from pony.orm.dbapiprovider import StrConverter
-from enum import Enum
 from realms.card import CardFaction, CardAction, CardTarget
 import os
 import json
@@ -16,46 +14,46 @@ import json
 db = Database()
 
 
-class Faction(db.Entity):
+class FactionPrimitive(db.Entity):
     id = PrimaryKey(int, auto=True)
     name = Required(str, unique=True)
-    cards = Set('Card')
+    cards = Set('CardPrimitive')
 
 
-class Target(db.Entity):
+class TargetPrimitive(db.Entity):
     id = PrimaryKey(int, auto=True)
     name = Required(str, unique=True)
-    effects = Set('Effect')
+    effects = Set('EffectPrimitive')
 
 
-class Action(db.Entity):
+class ActionPrimitive(db.Entity):
     id = PrimaryKey(int, auto=True)
     name = Required(str)
-    effects = Set('Effect')
+    effects = Set('EffectPrimitive')
 
 
-class Effect(db.Entity):
+class EffectPrimitive(db.Entity):
     id = PrimaryKey(int, auto=True)
-    target = Required(Target)
-    action = Required(Action)
+    target = Required(TargetPrimitive)
+    action = Required(ActionPrimitive)
     value = Required(int, size=8)
-    cards = Set('Card', reverse='effects')
-    allies = Set('Card', reverse='ally')
-    scraps = Set('Card', reverse='scrap')
+    cards = Set('CardPrimitive', reverse='effects')
+    allies = Set('CardPrimitive', reverse='ally')
+    scraps = Set('CardPrimitive', reverse='scrap')
 
 
-class Card(db.Entity):
+class CardPrimitive(db.Entity):
     id = PrimaryKey(int, auto=True)
     name = Required(str)
-    faction = Required(Faction)
+    faction = Required(FactionPrimitive)
     simplified = Required(bool)
     base = Required(bool)
     outpost = Required(bool)
     defense = Required(int, size=8)
     cost = Required(int, size=8)
-    effects = Set(Effect, reverse='cards')
-    ally = Set(Effect, reverse='allies')
-    scrap = Set(Effect, reverse='scraps')
+    effects = Set(EffectPrimitive, reverse='cards')
+    ally = Set(EffectPrimitive, reverse='allies')
+    scrap = Set(EffectPrimitive, reverse='scraps')
     count = Required(int, size=8)
 
 
@@ -66,10 +64,7 @@ def _populate_factions():
 
     :return: A list of Faction entities
     """
-    # for f in CardFaction:
-    #     print(f.name)
-    #     print(f.value)
-    factions = [Faction(name=f.value) for f in CardFaction]
+    factions = [FactionPrimitive(name=f.value) for f in CardFaction]
     commit()
     return factions
 
@@ -81,7 +76,7 @@ def _populate_actions():
     
     :return: A list of Action entities
     """
-    actions = [Action(name=a.name) for a in CardAction]
+    actions = [ActionPrimitive(name=a.name) for a in CardAction]
     commit()
     return actions
 
@@ -93,7 +88,7 @@ def _populate_targets():
     
     :return: A list of Target entities
     """
-    targets = [Target(name=t.name) for t in CardTarget]
+    targets = [TargetPrimitive(name=t.name) for t in CardTarget]
     commit()
     return targets
 
@@ -123,18 +118,17 @@ def _populate_card(card, actions, factions, targets):
     card_effects = _populate_effects(card['effects'], targets, actions)
     card_ally_effects = _populate_effects(card['ally'], targets, actions)
     card_scrap_effects = _populate_effects(card['scrap'], targets, actions)
-    populated_card = Card(name=card['name'],
-                          faction=card_faction,
-                          simplified=_str_to_bool(card['simplified']),
-                          base=_str_to_bool(card['base']),
-                          outpost=_str_to_bool(card['outpost']),
-                          defense=int(card['defense']),
-                          cost=int(card['cost']),
-                          count=int(card['count']),
-                          effects=card_effects,
-                          ally=card_ally_effects,
-                          scrap=card_scrap_effects
-                          )
+    populated_card = CardPrimitive(name=card['name'],
+                                   faction=card_faction,
+                                   simplified=_str_to_bool(card['simplified']),
+                                   base=_str_to_bool(card['base']),
+                                   outpost=_str_to_bool(card['outpost']),
+                                   defense=int(card['defense']),
+                                   cost=int(card['cost']),
+                                   count=int(card['count']),
+                                   effects=card_effects,
+                                   ally=card_ally_effects,
+                                   scrap=card_scrap_effects)
     return populated_card
 
 
@@ -144,9 +138,9 @@ def _populate_effects(effect_list, targets, actions):
     for effect in effect_list:
         e_target = next(t for t in targets if t.name == effect['target'])
         e_action = next(a for a in actions if a.name == effect['action'])
-        populated_effect = Effect(target=e_target,
-                                  action=e_action,
-                                  value=int(effect['value']))
+        populated_effect = EffectPrimitive(target=e_target,
+                                           action=e_action,
+                                           value=int(effect['value']))
         effects.append(populated_effect)
     return effects
 
