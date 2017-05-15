@@ -45,7 +45,7 @@ class Card(object):
         pass
 
 
-class Faction(Enum):
+class CardFaction(Enum):
     """
     The set of allowed factions for cards.
     """
@@ -54,7 +54,7 @@ class Faction(Enum):
     blob = 'Blob'
     federation = 'Federation'
     machine = 'Machine Cult'
-    allfacs = 'all'
+    allfacs = 'All'
 
     def __str__(self):
         """
