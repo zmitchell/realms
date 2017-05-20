@@ -19,4 +19,4 @@ def test_faction_str_representation():
 def test_faction_from_primitive(primitives):
     for primitive in primitives:
         faction = CardFaction.from_primitive(primitive)
-        assert faction.name == primitive.name
+        assert faction.value == primitive.name
