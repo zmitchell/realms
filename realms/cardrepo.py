@@ -6,7 +6,7 @@
 """
 
 from pony.orm import *
-from realms.card import CardFaction, CardAction, CardTarget
+from .card import CardFaction, CardAction, CardTarget
 import os
 import json
 
