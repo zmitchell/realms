@@ -6,8 +6,8 @@ import pytest
 
 @pytest.fixture
 @db_session
-def primitive():
-    return select(f for f in FactionPrimitive).first()
+def primitives():
+    return select(f for f in FactionPrimitive)
 
 
 def test_faction_str_representation():
@@ -16,6 +16,7 @@ def test_faction_str_representation():
 
 
 @db_session
-def test_faction_from_primitive(primitive):
-    faction = CardFaction.from_primitive(primitive)
-    assert faction.name == primitive.name
+def test_faction_from_primitive(primitives):
+    for primitive in primitives:
+        faction = CardFaction.from_primitive(primitive)
+        assert faction.name == primitive.name
