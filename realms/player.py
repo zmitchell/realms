@@ -6,7 +6,7 @@
 """
 
 
-from deck import PlayerDeck
+from .deck import PlayerDeck
 
 
 class Player(object):
