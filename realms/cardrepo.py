@@ -5,59 +5,59 @@
 .. moduleauthor:: Zach Mitchell <zmitchell@fastmail.com>
 """
 
-from pony.orm import *
+import pony.orm as pny
 from .card import CardFaction, CardAction, CardTarget
 import os
 import json
 
 
-db = Database()
+db = pny.Database()
 
 
 class FactionPrimitive(db.Entity):
-    id = PrimaryKey(int, auto=True)
-    name = Required(str, unique=True)
-    cards = Set('CardPrimitive')
+    id = pny.PrimaryKey(int, auto=True)
+    name = pny.Required(str, unique=True)
+    cards = pny.Set('CardPrimitive')
 
 
 class TargetPrimitive(db.Entity):
-    id = PrimaryKey(int, auto=True)
-    name = Required(str, unique=True)
-    effects = Set('EffectPrimitive')
+    id = pny.PrimaryKey(int, auto=True)
+    name = pny.Required(str, unique=True)
+    effects = pny.Set('EffectPrimitive')
 
 
 class ActionPrimitive(db.Entity):
-    id = PrimaryKey(int, auto=True)
-    name = Required(str)
-    effects = Set('EffectPrimitive')
+    id = pny.PrimaryKey(int, auto=True)
+    name = pny.Required(str)
+    effects = pny.Set('EffectPrimitive')
 
 
 class EffectPrimitive(db.Entity):
-    id = PrimaryKey(int, auto=True)
-    target = Required(TargetPrimitive)
-    action = Required(ActionPrimitive)
-    value = Required(int, size=8)
-    cards = Set('CardPrimitive', reverse='effects')
-    allies = Set('CardPrimitive', reverse='ally')
-    scraps = Set('CardPrimitive', reverse='scrap')
+    id = pny.PrimaryKey(int, auto=True)
+    target = pny.Required(TargetPrimitive)
+    action = pny.Required(ActionPrimitive)
+    value = pny.Required(int, size=8)
+    cards = pny.Set('CardPrimitive', reverse='effects')
+    allies = pny.Set('CardPrimitive', reverse='ally')
+    scraps = pny.Set('CardPrimitive', reverse='scrap')
 
 
 class CardPrimitive(db.Entity):
-    id = PrimaryKey(int, auto=True)
-    name = Required(str)
-    faction = Required(FactionPrimitive)
-    simplified = Required(bool)
-    base = Required(bool)
-    outpost = Required(bool)
-    defense = Required(int, size=8)
-    cost = Required(int, size=8)
-    effects = Set(EffectPrimitive, reverse='cards')
-    ally = Set(EffectPrimitive, reverse='allies')
-    scrap = Set(EffectPrimitive, reverse='scraps')
-    count = Required(int, size=8)
+    id = pny.PrimaryKey(int, auto=True)
+    name = pny.Required(str)
+    faction = pny.Required(FactionPrimitive)
+    simplified = pny.Required(bool)
+    base = pny.Required(bool)
+    outpost = pny.Required(bool)
+    defense = pny.Required(int, size=8)
+    cost = pny.Required(int, size=8)
+    effects = pny.Set(EffectPrimitive, reverse='cards')
+    ally = pny.Set(EffectPrimitive, reverse='allies')
+    scrap = pny.Set(EffectPrimitive, reverse='scraps')
+    count = pny.Required(int, size=8)
 
 
-@db_session
+@pny.db_session
 def _populate_factions():
     """
     Adds the records to the Faction table
@@ -65,31 +65,31 @@ def _populate_factions():
     :return: A list of Faction entities
     """
     factions = [FactionPrimitive(name=f.value) for f in CardFaction]
-    commit()
+    pny.commit()
     return factions
 
 
-@db_session
+@pny.db_session
 def _populate_actions():
     """
     Adds the records to the Action table
-    
+
     :return: A list of Action entities
     """
     actions = [ActionPrimitive(name=a.name) for a in CardAction]
-    commit()
+    pny.commit()
     return actions
 
 
-@db_session
+@pny.db_session
 def _populate_targets():
     """
     Adds the records to the Target table
-    
+
     :return: A list of Target entities
     """
     targets = [TargetPrimitive(name=t.name) for t in CardTarget]
-    commit()
+    pny.commit()
     return targets
 
 
@@ -100,19 +100,19 @@ def _populate_enums():
     return action_entities, faction_entities, target_entities
 
 
-@db_session
+@pny.db_session
 def _populate_db():
     with open('cards.json', 'r') as json_file:
         json_string = json_file.read()
         json_cards = json.loads(json_string)
     actions, factions, targets = _populate_enums()
     for j in json_cards:
-        _ = _populate_card(j, actions, factions, targets)
-        commit()
+        _populate_card(j, actions, factions, targets)
+        pny.commit()
     return
 
 
-@db_session
+@pny.db_session
 def _populate_card(card, actions, factions, targets):
     card_faction = next(f for f in factions if f.name == card['faction'])
     card_effects = _populate_effects(card['effects'], targets, actions)
@@ -132,7 +132,7 @@ def _populate_card(card, actions, factions, targets):
     return populated_card
 
 
-@db_session
+@pny.db_session
 def _populate_effects(effect_list, targets, actions):
     effects = []
     for effect in effect_list:
