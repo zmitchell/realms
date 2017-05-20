@@ -56,6 +56,10 @@ class CardFaction(Enum):
     machine = 'Machine Cult'
     allfacs = 'All'
 
+    @classmethod
+    def from_primitive(cls, primitive):
+        return cls[primitive.name]
+
     def __str__(self):
         """
         String representation of the object
