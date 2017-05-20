@@ -49,12 +49,12 @@ class CardFaction(Enum):
     """
     The set of allowed factions for cards.
     """
-    unaligned = 'Unaligned'
-    star = 'Star Empire'
-    blob = 'Blob'
-    federation = 'Federation'
-    machine = 'Machine Cult'
-    allfacs = 'All'
+    UNALIGNED = 'Unaligned'
+    STAR = 'Star Empire'
+    BLOB = 'Blob'
+    FEDERATION = 'Federation'
+    MACHINE = 'Machine Cult'
+    ALL = 'All'
 
     @classmethod
     def from_primitive(cls, primitive):
@@ -74,7 +74,7 @@ class CardFaction(Enum):
 
         Example::
 
-            >>> fac = Faction.star
+            >>> fac = Faction.STAR
             >>> str(fac)
             Star Empire
         """
@@ -108,20 +108,19 @@ class CardTarget(Enum):
     """
     The receiver of a card's effect
     """
-    owner = 0
-    opponent = 1
+    OWNER = 0
+    OPPONENT = 1
 
 
 class CardAction(Enum):
     """
     The type of action that an effect entails
     """
-    attack = 0
-    heal = 1
-    draw = 2
-    scrap = 3
-    acquire = 4
-    discard = 5
-    money = 6
-    destroy = 7
-
+    ATTACK = 0
+    HEAL = 1
+    DRAW = 2
+    SCRAP = 3
+    ACQUIRE = 4
+    DISCARD = 5
+    MONEY = 6
+    DESTROY = 7

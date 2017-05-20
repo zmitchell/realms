@@ -135,8 +135,8 @@ def _populate_card(card, actions, factions, targets):
 def _populate_effects(effect_list, targets, actions):
     effects = []
     for effect in effect_list:
-        e_target = next(t for t in targets if t.name == effect['target'])
-        e_action = next(a for a in actions if a.name == effect['action'])
+        e_target = next(t for t in targets if t.name == effect['target'].upper())
+        e_action = next(a for a in actions if a.name == effect['action'].upper())
         populated_effect = EffectPrimitive(target=e_target,
                                            action=e_action,
                                            value=int(effect['value']))
