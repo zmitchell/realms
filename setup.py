@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 with open('README.rst') as readme_file:
     readme = readme_file.read()
@@ -25,9 +25,7 @@ setup(
     author="Zach Mitchell",
     author_email='zmitchell@fastmail.com',
     url='https://github.com/zmitchell/realms',
-    packages=[
-        'realms',
-    ],
+    packages=find_packages(),
     package_dir={'realms':
                  'realms'},
     include_package_data=True,
