@@ -1,6 +1,6 @@
 from realms.card import CardFaction
-from realms.cardrepo import db_session, FactionPrimitive
-from pony.orm import select
+from realms.cardrepo import FactionPrimitive
+from pony.orm import select, db_session
 import pytest
 
 
