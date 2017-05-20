@@ -9,7 +9,7 @@ import pony.orm as pny
 from .card import CardFaction, CardAction, CardTarget
 import os
 import json
-
+from pkg_resources import resource_string, resource_exists
 
 db = pny.Database()
 
@@ -102,9 +102,8 @@ def _populate_enums():
 
 @pny.db_session
 def _populate_db():
-    with open('cards.json', 'r') as json_file:
-        json_string = json_file.read()
-        json_cards = json.loads(json_string)
+    json_string = resource_string('realms_web.resources', 'cards.json')
+    json_cards = json.loads(json_string)
     actions, factions, targets = _populate_enums()
     for j in json_cards:
         _populate_card(j, actions, factions, targets)
@@ -149,7 +148,7 @@ def _str_to_bool(string):
     return True if string == 'true' else False
 
 
-if not os.path.isfile('realms-cards.sqlite'):
+if not resource_exists(__package__, 'realms-cards.sqlite'):
     db.bind('sqlite', 'realms-cards.sqlite', create_db=True)
     db.generate_mapping(create_tables=True)
     _populate_db()
