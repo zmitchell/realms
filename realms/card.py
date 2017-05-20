@@ -58,7 +58,7 @@ class CardFaction(Enum):
 
     @classmethod
     def from_primitive(cls, primitive):
-        return cls[primitive.name]
+        return next(f for f in cls if f.value == primitive.name)
 
     def __str__(self):
         """
