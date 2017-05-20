@@ -101,7 +101,7 @@ def _populate_enums():
 
 @pny.db_session
 def _populate_db():
-    json_string = resource_string('realms_web.resources', 'cards.json')
+    json_string = resource_string('realms.resources', 'cards.json')
     json_cards = json.loads(json_string)
     actions, factions, targets = _populate_enums()
     for j in json_cards:
