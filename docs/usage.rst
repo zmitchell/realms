@@ -2,6 +2,6 @@
 Usage
 =====
 
-To use realms-migration in a project::
+To use realms in a project::
 
-    import realms_migration
+    import realms

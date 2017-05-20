@@ -8,13 +8,13 @@ Installation
 Stable release
 --------------
 
-To install realms-migration, run this command in your terminal:
+To install realms, run this command in your terminal:
 
 .. code-block:: console
 
-    $ pip install realms_migration
+    $ pip install realms
 
-This is the preferred method to install realms-migration, as it will always install the most recent stable release. 
+This is the preferred method to install realms, as it will always install the most recent stable release.
 
 If you don't have `pip`_ installed, this `Python installation guide`_ can guide
 you through the process.
@@ -26,19 +26,19 @@ you through the process.
 From sources
 ------------
 
-The sources for realms-migration can be downloaded from the `Github repo`_.
+The sources for realms can be downloaded from the `Github repo`_.
 
 You can either clone the public repository:
 
 .. code-block:: console
 
-    $ git clone git://github.com/zmitchell/realms_migration
+    $ git clone git://github.com/zmitchell/realms
 
 Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl  -OL https://github.com/zmitchell/realms_migration/tarball/master
+    $ curl  -OL https://github.com/zmitchell/realms/tarball/master
 
 Once you have a copy of the source, you can install it with:
 
@@ -47,5 +47,5 @@ Once you have a copy of the source, you can install it with:
     $ python setup.py install
 
 
-.. _Github repo: https://github.com/zmitchell/realms_migration
-.. _tarball: https://github.com/zmitchell/realms_migration/tarball/master
+.. _Github repo: https://github.com/zmitchell/realms
+.. _tarball: https://github.com/zmitchell/realms/tarball/master

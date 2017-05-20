@@ -1,4 +1,4 @@
-Welcome to realms-migration's documentation!
+Welcome to realms's documentation!
 ======================================
 
 Contents:

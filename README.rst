@@ -1,6 +1,6 @@
-==========
-Realms Web
-==========
+======
+Realms
+======
 
 
 .. image:: https://img.shields.io/travis/zmitchell/realms.svg?style=flat-square
