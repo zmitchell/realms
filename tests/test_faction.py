@@ -11,7 +11,7 @@ def primitive():
 
 
 def test_faction_str_representation():
-    fac = CardFaction.star
+    fac = CardFaction.STAR
     assert str(fac) == 'Star Empire'
 
 
