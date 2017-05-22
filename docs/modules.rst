@@ -1,5 +1,6 @@
-realms
-======
+================
+Package Contents
+================
 
 .. toctree::
    :maxdepth: 4

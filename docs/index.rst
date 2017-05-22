@@ -1,16 +1,20 @@
-Welcome to realms's documentation!
-======================================
+====================================
+Welcome to the realms documentation!
+====================================
 
 Contents:
+=========
 
 .. toctree::
    :maxdepth: 2
 
    readme
+   roadmap
+   gameplay
+   modules
    installation
-   usage
    contributing
-   authorshistory
+   authors
 
 Indices and tables
 ==================

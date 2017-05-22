@@ -14,10 +14,14 @@ Realms
         :target: http://realms.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
+.. image:: https://img.shields.io/github/license/zmitchell/realms.svg
+        :target: https://github.com/zmitchell/realms
+
 Realms is a game in which players take turns buying and playing cards to build the most powerful deck. The inspiration for this game is Star Realms, which is meant to be played by two people. This game can be played by several people at once. Star Realms also offers digital versions of the game in standalone apps, but this game is meant to be played only on the web. This project is in no way affiliated with Star Realms or White Wizard Games.
 
 
 * Free software: MIT license
+* Documentation: https://realms.readthedocs.io
 
 Credits
 ---------
