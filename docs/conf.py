@@ -43,7 +43,7 @@ import realms
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.viewcode',
-              'sphinxcontrib.napoleon']
+              'sphinx.ext.napoleon']
 
 # Napoleon settings
 napoleon_use_admonition_for_notes = True
