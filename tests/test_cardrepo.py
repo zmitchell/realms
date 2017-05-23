@@ -86,7 +86,7 @@ def main_deck_cards(repo):
     return repo.main_deck_cards()
 
 
-def test_main_deck_length(main_deck_cards):
+def test_main_deck_cards_length(main_deck_cards):
     assert len(main_deck_cards) > 0
 
 
@@ -103,3 +103,27 @@ def test_main_deck_cards_does_not_contain_scouts(main_deck_cards):
 def test_main_deck_cards_does_not_contain_explorers(main_deck_cards):
     with pytest.raises(StopIteration):
         next(c for c in main_deck_cards if c.name == 'Explorer')
+
+
+@pytest.fixture
+def player_deck_cards(repo):
+    return repo.player_deck_cards()
+
+
+def test_player_deck_cards_length(player_deck_cards):
+    assert len(player_deck_cards) == 10
+
+
+def test_player_deck_cards_contains_only_vipers_and_scouts(player_deck_cards):
+    with pytest.raises(StopIteration):
+        next(c for c in player_deck_cards if (c.name != 'Viper') and (c.name != 'Scout'))
+
+
+def test_player_deck_cards_viper_count(player_deck_cards):
+    vipers = [c for c in player_deck_cards if c.name == 'Viper']
+    assert len(vipers) == 2
+
+
+def test_player_deck_cards_scout_count(player_deck_cards):
+    scouts = [c for c in player_deck_cards if c.name == 'Scout']
+    assert len(scouts) == 8

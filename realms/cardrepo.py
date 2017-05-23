@@ -69,6 +69,21 @@ class CardRepo(object):
                 cards.append(card)
         return cards
 
+    @db_session
+    def player_deck_cards(self):
+        scout_primitive = select(c for c in CardPrimitive if c.name == 'Scout').first()
+        viper_primitive = select(c for c in CardPrimitive if c.name == 'Viper').first()
+        cards = []
+        for i in range(8):
+            new_uuid = uuid4()
+            scout = Card(scout_primitive, new_uuid)
+            cards.append(scout)
+        for i in range(2):
+            new_uuid = uuid4()
+            viper = Card(viper_primitive, new_uuid)
+            cards.append(viper)
+        return cards
+
 
 class FactionPrimitive(db.Entity):
     """The ORM entity representing a ``CardFaction`` member
