@@ -1,5 +1,4 @@
 from realms.card import CardFaction, CardTarget, CardAction
-from pony.orm import db_session
 import pytest
 
 
