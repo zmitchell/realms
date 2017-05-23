@@ -13,37 +13,51 @@ class Card(object):
 
     Parameters
     ----------
+    card_primitive : CardPrimitive
+        A CardPrimitive instance from the ORM to convert into a Card
     uuid : UUID
-        A unique identifier for the card
+        A unique identifier to assign to the card
+
+    Attributes
+    ----------
+    uuid : UUID
+        A unique identifier for this instance of this card
     name : str
-        The display name of the card
-    is_base : bool
-        Denotes whether the card is a base or a ship
-    is_outpost : bool
-        If the card is a base, this denotes whether it is also an outpost
-    health : int
-        If the card is a base, this is the amount of damage required to destroy it
-    cost : int
-        The cost to buy the card
+        A display name for the card
     faction : CardFaction
         The faction to which the card belongs
-    effects : [CardEffect]
-        A list of effects provided by the card
-    ally_abilities : [CardEffect]
-        A list of effects activated by cards of the same faction
-    image
-        The display image of the card
+    base : bool
+        Is the card a base
+    outpost : bool
+        If the card is a base, is it also an outpost
+    defense : int
+        If the card is a base, the amount of damage required to destroy it
+    cost : int
+        The amount of trade needed to acquire the card
+    effects_basic : [CardEffect]
+        The effects activated when the card is played
+    effects_ally : [CardEffect]
+        The effects activated by other cards of the same faction
+    effects_scrap : [CardEffect]
+        The effects activated when the player chooses to scrap the card
 
     Note
     ----
-    The constructor for this class will likely be overhauled to simply take
-    an instance of ``CardPrimitive`` and a few other parameters to simplify
-    the process of constructing a ``Card``.
+    Different instances of a single card i.e. different Vipers will have
+    different UUIDs
     """
-
-    def __init__(self, uuid, name, is_base=False, is_outpost=False, health=None,
-                 cost=None, faction=None, effects=None, ally_ability=None, image=None):
-        pass
+    def __init__(self, card_primitive, uuid):
+        self.uuid = uuid
+        self.name = card_primitive.name
+        self.faction = CardFaction.from_primitive(card_primitive.faction)
+        self.base = card_primitive.base
+        self.outpost = card_primitive.outpost
+        self.defense = card_primitive.defense
+        self.cost = card_primitive.cost
+        self.effects_basic = [CardEffect(e) for e in card_primitive.effects]
+        self.effects_ally = [CardEffect(e) for e in card_primitive.ally]
+        self.effects_scrap = [CardEffect(e) for e in card_primitive.scrap]
+        return
 
 
 class CardFaction(Enum):
@@ -99,7 +113,7 @@ class CardEffect(object):
     Identifies an action, any values associated with the action,
     and who the effect should be applied to.
 
-    Parameters
+    Attributes
     ----------
     target : CardTarget
         The player who should receive the effect of the card
@@ -108,10 +122,10 @@ class CardEffect(object):
     value : int
         The value associated with the action
     """
-    def __init__(self, target, action, value):
-        self.target = target
-        self.action = action
-        self.value = value
+    def __init__(self, effect_primitive):
+        self.target = CardTarget.from_primitive(effect_primitive.target)
+        self.action = CardAction.from_primitive(effect_primitive.action)
+        self.value = effect_primitive.value
         return
 
 
@@ -120,6 +134,10 @@ class CardTarget(Enum):
     """
     OPPONENT = 0
     OWNER = 1
+
+    @classmethod
+    def from_primitive(cls, primitive):
+        return next(t for t in cls if t.name == primitive.name)
 
 
 class CardAction(Enum):
@@ -142,5 +160,8 @@ class CardAction(Enum):
     SCRAP = 7
     """Permanently discard a card"""
 
+    @classmethod
+    def from_primitive(cls, primitive):
+        return next(a for a in cls if a.name == primitive.name)
 
 
