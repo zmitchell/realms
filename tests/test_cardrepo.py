@@ -11,7 +11,6 @@ def repo():
 
 
 @pytest.fixture
-@db_session
 def viper(repo):
     return repo.new_viper()
 
@@ -36,7 +35,6 @@ def test_viper_effects_number(viper):
 
 
 @pytest.fixture
-@db_session
 def scout(repo):
     return repo.new_scout()
 
@@ -61,7 +59,6 @@ def test_scout_effects_number(scout):
 
 
 @pytest.fixture
-@db_session
 def explorer(repo):
     return repo.new_explorer()
 
@@ -93,7 +90,6 @@ def test_explorer_effects_number(explorer):
 
 
 @pytest.fixture
-@db_session
 def main_deck_cards(repo):
     return repo.main_deck_cards()
 
