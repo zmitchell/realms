@@ -51,39 +51,55 @@ def test_action_from_primitive(action_primitives):
         assert action.name == primitive.name
 
 
+@pytest.fixture
 @db_session
-def test_cardrepo_produce_new_viper(repo):
-    viper = repo.new_viper()
-    v_effect = viper.effects_basic[0]
+def viper(repo):
+    return repo.new_viper()
+
+
+def test_cardrepo_viper_properties(viper):
     assert viper.faction == CardFaction.UNALIGNED
     assert viper.cost == 0
-    assert viper.base == False
+    assert viper.base is False
 
 
-@db_session
-def test_cardrepo_viper_effects(repo):
-    viper = repo.new_viper()
+def test_cardrepo_viper_effects_basic(viper):
     v_effect = viper.effects_basic[0]
     assert v_effect.target == CardTarget.OPPONENT
     assert v_effect.action == CardAction.ATTACK
     assert v_effect.value == 1
 
 
+def test_cardrepo_viper_effects_number(viper):
+    assert len(viper.effects_basic) == 1
+    assert len(viper.effects_ally) == 0
+    assert len(viper.effects_scrap) == 0
+
+
+@pytest.fixture
 @db_session
-def test_cardrepo_produce_new_scout(repo):
-    scout = repo.new_scout()
+def scout(repo):
+    return repo.new_scout()
+
+
+def test_cardrepo_scout_properties(scout):
     assert scout.faction == CardFaction.UNALIGNED
     assert scout.cost == 0
-    assert scout.base == False
+    assert scout.base is False
 
 
-@db_session
-def test_cardrepo_scout_effects(repo):
-    scout = repo.new_scout()
+def test_cardrepo_scout_effects_basic(scout):
     s_effect = scout.effects_basic[0]
     assert s_effect.target == CardTarget.OWNER
     assert s_effect.action == CardAction.MONEY
     assert s_effect.value == 1
+
+
+def test_cardrepo_scout_effects_number(scout):
+    assert len(scout.effects_basic) == 1
+    assert len(scout.effects_ally) == 0
+    assert len(scout.effects_scrap) == 0
+
 
 @pytest.fixture
 @db_session
