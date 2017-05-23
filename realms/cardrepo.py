@@ -46,6 +46,10 @@ class CardRepo(object):
         return scout
 
     @db_session
+    def new_explorer(self):
+        explorer = self._named_card('Explorer')
+        return explorer
+
     @db_session
     def _named_card(self, cardname):
         primitive = select(c for c in CardPrimitive if c.name == cardname).first()

@@ -85,3 +85,34 @@ def test_cardrepo_scout_effects(repo):
     assert s_effect.action == CardAction.MONEY
     assert s_effect.value == 1
 
+@pytest.fixture
+@db_session
+def explorer(repo):
+    return repo.new_explorer()
+
+
+def test_cardrepo_explorer_properties(explorer):
+    assert explorer.faction == CardFaction.UNALIGNED
+    assert explorer.cost == 0
+    assert explorer.base is False
+
+
+def test_cardrepo_explorer_effects_basic(explorer):
+    effect = explorer.effects_basic[0]
+    assert effect.target == CardTarget.OWNER
+    assert effect.action == CardAction.MONEY
+    assert effect.value == 2
+
+
+def test_cardrepo_explorer_effects_scrap(explorer):
+    effect = explorer.effects_scrap[0]
+    assert effect.target == CardTarget.OPPONENT
+    assert effect.action == CardAction.ATTACK
+    assert effect.value == 2
+
+
+def test_cardrepo_explorer_effects_number(explorer):
+    assert len(explorer.effects_basic) == 1
+    assert len(explorer.effects_ally) == 0
+    assert len(explorer.effects_scrap) == 1
+
