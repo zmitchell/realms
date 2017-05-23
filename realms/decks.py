@@ -5,6 +5,8 @@
 .. moduleauthor:: Zach Mitchell <zmitchell@fastmail.com>
 """
 
+from random import shuffle
+
 
 class Hand(object):
     """
@@ -110,25 +112,37 @@ class PlayerDeck(object):
 
 
 class MainDeck(object):
-    """
-    The deck from which players can acquire cards
-    """
-    def __init__(self):
-        self._trade_row = TradeRow()
-        self._cards = None
-        pass
+    """The deck from which players can acquire cards
 
-    def _shuffle(self):
-        """
-        Shuffles the deck in place
-        """
-        pass
+    Parameters
+    ----------
+    cardrepo : CardRepo
+        The repository from which the cards are obtained
+    """
+    def __init__(self, cardrepo):
+        self._repo = cardrepo
+        self._cards = self._repo.main_deck_cards()
+        shuffle(self._cards)
+        return
 
-    def _draw(self):
+    def next_card(self):
+        """Produces the next card from the main deck
+
+        Returns
+        -------
+        Card
+            A card from the top of the main deck
+
+        Note
+        ----
+        Returns ``None`` when there are no cards remaining
         """
-        Returns the next card from the top of the deck
-        """
-        pass
+        card_gen = (c for c in self._cards)
+        while True:
+            try:
+                yield next(card_gen)
+            except StopIteration:
+                yield None
 
 
 class TradeRow(object):
