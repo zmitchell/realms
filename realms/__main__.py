@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
-import sys
 
 
 def main(args=None):
     """The main routine."""
-    if args is None:
-        args = sys.argv[1:]
     return
 
 
