@@ -18,7 +18,6 @@ from .card import CardFaction, CardAction, CardTarget, Card
 import json
 from pkg_resources import resource_string, resource_exists
 from uuid import uuid4
-from collections import deque
 
 db = Database()
 
@@ -61,7 +60,7 @@ class CardRepo(object):
     @db_session
     def main_deck_cards(self):
         primitives = select(c for c in CardPrimitive if c.count != 0)
-        cards = deque()
+        cards = []
         for p in primitives:
             for i in range(p.count):
                 new_uuid = uuid4()
