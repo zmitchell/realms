@@ -107,5 +107,9 @@ Tips
 
 To run a subset of tests::
 
-$ pytest tests.file_containing_tests
+$ pytest tests/file_containing_tests.py
+
+To run the application::
+
+$ python -m realms
 

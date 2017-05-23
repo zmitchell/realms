@@ -15,6 +15,7 @@ Contents:
    installation
    contributing
    authors
+   history
 
 Indices and tables
 ==================
