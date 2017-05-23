@@ -6,14 +6,14 @@
 """
 
 from pony.orm import (
-        Database,
-        Required,
-        Set,
-        PrimaryKey,
-        select,
-        commit,
-        db_session
-    )
+    Database,
+    Required,
+    Set,
+    PrimaryKey,
+    select,
+    commit,
+    db_session
+)
 from .card import CardFaction, CardAction, CardTarget, Card
 import json
 from pkg_resources import resource_string, resource_exists
