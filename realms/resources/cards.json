@@ -10,7 +10,7 @@
     "effects": [
         {
             "target": "owner",
-            "action": "attack",
+            "action": "money",
             "value": 1,
             "condition": {}
         }
