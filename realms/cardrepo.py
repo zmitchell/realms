@@ -29,19 +29,20 @@ class CardRepo(object):
 
     @pny.db_session
     def new_viper(self):
-        viper_primitive = pny.select(c for c in CardPrimitive
-                                     if c.name == 'Viper').first()
-        new_uuid = uuid4()
-        viper = Card(viper_primitive, new_uuid)
+        viper = self._named_card('Viper')
         return viper
 
     @pny.db_session
     def new_scout(self):
-        scout_primitive = pny.select(c for c in CardPrimitive
-                                     if c.name == 'Scout').first()
-        new_uuid = uuid4()
-        scout = Card(scout_primitive, new_uuid)
+        scout = self._named_card('Scout')
         return scout
+
+    @pny.db_session
+    def _named_card(self, cardname):
+        primitive = pny.select(c for c in CardPrimitive if c.name == cardname).first()
+        new_uuid = uuid4()
+        card = Card(primitive, new_uuid)
+        return card
 
 
 class FactionPrimitive(db.Entity):
