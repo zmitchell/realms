@@ -1,6 +1,6 @@
 import pytest
 from realms.cardrepo import CardRepo, FactionPrimitive, ActionPrimitive, TargetPrimitive
-from realms.card import CardFaction, CardTarget, CardAction
+from realms.cards import CardFaction, CardTarget, CardAction
 from pony.orm import db_session, select
 
 

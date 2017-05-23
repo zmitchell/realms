@@ -1,4 +1,4 @@
-from realms.card import CardFaction, CardTarget, CardAction
+from realms.cards import CardFaction, CardTarget, CardAction
 import pytest
 
 

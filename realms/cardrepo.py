@@ -14,7 +14,7 @@ from pony.orm import (
     commit,
     db_session
 )
-from .card import CardFaction, CardAction, CardTarget, Card
+from .cards import CardFaction, CardAction, CardTarget, Card
 import json
 from pkg_resources import resource_string, resource_exists
 from uuid import uuid4
