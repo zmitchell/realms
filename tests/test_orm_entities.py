@@ -4,12 +4,6 @@ from realms.card import CardFaction, CardTarget, CardAction
 from pony.orm import db_session, select
 
 
-@pytest.fixture(scope='module')
-def repo():
-    repo = CardRepo()
-    return repo
-
-
 @pytest.fixture
 @db_session
 def faction_primitives(repo):

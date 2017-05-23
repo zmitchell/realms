@@ -1,13 +1,6 @@
 from realms.card import CardFaction, CardTarget, CardAction
-from realms.cardrepo import CardRepo
 from pony.orm import db_session
 import pytest
-
-
-@pytest.fixture(scope='module')
-def repo():
-    repo = CardRepo()
-    return repo
 
 
 @pytest.fixture
