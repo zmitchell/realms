@@ -37,21 +37,54 @@ class CardRepo(object):
 
     @db_session
     def new_viper(self):
+        """Produces a new instance of a Viper card
+
+        Returns
+        -------
+        Card
+            A new Viper
+        """
         viper = self._named_card('Viper')
         return viper
 
     @db_session
     def new_scout(self):
+        """Produces a new instance of a Scout card
+
+        Returns
+        -------
+        Card
+            A new Scout
+        """
         scout = self._named_card('Scout')
         return scout
 
     @db_session
     def new_explorer(self):
+        """Produces a new instance of an Explorer card
+
+        Returns
+        -------
+        Card
+            A new Explorer
+        """
         explorer = self._named_card('Explorer')
         return explorer
 
     @db_session
     def _named_card(self, cardname):
+        """Produces a new instance of a card with the given name
+
+        Parameters
+        ----------
+        cardname : str
+            The name of the card to produce
+
+        Returns
+        -------
+        Card
+            The card that was requested
+        """
         primitive = select(c for c in CardPrimitive if c.name == cardname).first()
         new_uuid = uuid4()
         card = Card(primitive, new_uuid)
@@ -59,6 +92,21 @@ class CardRepo(object):
 
     @db_session
     def main_deck_cards(self):
+        """Produces the list of cards suitable for the main deck
+
+        The list of main deck cards does not contain Vipers, Scouts, or
+        Explorers, but the ``MainDeck`` class does allow players to buy
+        new Explorer cards.
+
+        Returns
+        -------
+        [Card]
+            A list of cards for the main deck
+
+        Note
+        ----
+        The list of cards is not shuffled
+        """
         primitives = select(c for c in CardPrimitive if c.count != 0)
         cards = []
         for p in primitives:
@@ -70,6 +118,17 @@ class CardRepo(object):
 
     @db_session
     def player_deck_cards(self):
+        """Produces the list of cards for a single player's starting deck
+
+        Returns
+        -------
+        [Card]
+            The list of cards for a player's starting deck
+
+        Note
+        ----
+        The list of cards is not shuffled
+        """
         scout_primitive = select(c for c in CardPrimitive if c.name == 'Scout').first()
         viper_primitive = select(c for c in CardPrimitive if c.name == 'Viper').first()
         cards = []
