@@ -91,3 +91,27 @@ def test_cardrepo_explorer_effects_number(explorer):
     assert len(explorer.effects_ally) == 0
     assert len(explorer.effects_scrap) == 1
 
+
+@pytest.fixture
+@db_session
+def main_deck_cards(repo):
+    return repo.main_deck_cards()
+
+
+def test_main_deck_length(main_deck_cards):
+    assert len(main_deck_cards) > 0
+
+
+def test_main_deck_cards_does_not_contain_vipers(main_deck_cards):
+    with pytest.raises(StopIteration):
+        next(c for c in main_deck_cards if c.name == 'Viper')
+
+
+def test_main_deck_cards_does_not_contain_scouts(main_deck_cards):
+    with pytest.raises(StopIteration):
+        next(c for c in main_deck_cards if c.name == 'Scout')
+
+
+def test_main_deck_cards_does_not_contain_explorers(main_deck_cards):
+    with pytest.raises(StopIteration):
+        next(c for c in main_deck_cards if c.name == 'Explorer')
