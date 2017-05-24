@@ -137,12 +137,10 @@ class MainDeck(object):
         ----
         Returns ``None`` when there are no cards remaining
         """
-        card_gen = (c for c in self._cards)
-        while True:
-            try:
-                yield next(card_gen)
-            except StopIteration:
-                yield None
+        if len(self._cards) > 0:
+            return self._cards.pop()
+        else:
+            return None
 
 
 class TradeRow(object):
