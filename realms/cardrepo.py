@@ -18,6 +18,9 @@ from .cards import CardFaction, CardAction, CardTarget, Card
 import json
 from pkg_resources import resource_string, resource_exists
 from uuid import uuid4
+from typing import List, Tuple
+
+CardList = List[Card]
 
 db = Database()
 
@@ -26,7 +29,7 @@ class CardRepo(object):
     """Provides an interface for the card-loading mechanisms
     """
     def __init__(self):
-        self.db = db
+        self.db: Database = db
         if not resource_exists(__package__, 'realms-cards.sqlite'):
             db.bind('sqlite', 'realms-cards.sqlite', create_db=True)
             db.generate_mapping(create_tables=True)
@@ -36,7 +39,7 @@ class CardRepo(object):
             db.generate_mapping()
 
     @db_session
-    def new_viper(self):
+    def new_viper(self) -> Card:
         """Produces a new instance of a Viper card
 
         Returns
@@ -44,11 +47,11 @@ class CardRepo(object):
         Card
             A new Viper
         """
-        viper = self._named_card('Viper')
+        viper: Card = self._named_card('Viper')
         return viper
 
     @db_session
-    def new_scout(self):
+    def new_scout(self) -> Card:
         """Produces a new instance of a Scout card
 
         Returns
@@ -56,11 +59,11 @@ class CardRepo(object):
         Card
             A new Scout
         """
-        scout = self._named_card('Scout')
+        scout: Card = self._named_card('Scout')
         return scout
 
     @db_session
-    def new_explorer(self):
+    def new_explorer(self) -> Card:
         """Produces a new instance of an Explorer card
 
         Returns
@@ -68,11 +71,11 @@ class CardRepo(object):
         Card
             A new Explorer
         """
-        explorer = self._named_card('Explorer')
+        explorer: Card = self._named_card('Explorer')
         return explorer
 
     @db_session
-    def _named_card(self, cardname):
+    def _named_card(self, cardname: str) -> Card:
         """Produces a new instance of a card with the given name
 
         Parameters
@@ -85,13 +88,13 @@ class CardRepo(object):
         Card
             The card that was requested
         """
-        primitive = select(c for c in CardPrimitive if c.name == cardname).first()
-        new_uuid = uuid4()
-        card = Card(primitive, new_uuid)
+        primitive: CardPrimitive = select(c for c in CardPrimitive if c.name == cardname).first()
+        new_uuid: UUID = uuid4()
+        card: Card = Card(primitive, new_uuid)
         return card
 
     @db_session
-    def main_deck_cards(self):
+    def main_deck_cards(self) -> CardList:
         """Produces the list of cards suitable for the main deck
 
         The list of main deck cards does not contain Vipers, Scouts, or
@@ -107,17 +110,17 @@ class CardRepo(object):
         ----
         The list of cards is not shuffled
         """
-        primitives = select(c for c in CardPrimitive if c.count != 0)
-        cards = []
+        primitives: List[CardPrimitive] = select(c for c in CardPrimitive if c.count != 0)
+        cards: CardList = []
         for p in primitives:
             for i in range(p.count):
-                new_uuid = uuid4()
-                card = Card(p, new_uuid)
+                new_uuid: UUID = uuid4()
+                card: Card = Card(p, new_uuid)
                 cards.append(card)
         return cards
 
     @db_session
-    def player_deck_cards(self):
+    def player_deck_cards(self) -> CardList:
         """Produces the list of cards for a single player's starting deck
 
         Returns
@@ -129,16 +132,18 @@ class CardRepo(object):
         ----
         The list of cards is not shuffled
         """
-        scout_primitive = select(c for c in CardPrimitive if c.name == 'Scout').first()
-        viper_primitive = select(c for c in CardPrimitive if c.name == 'Viper').first()
-        cards = []
+        scout_primitive: CardPrimitive = select(c for c in CardPrimitive
+                                                if c.name == 'Scout').first()
+        viper_primitive: CardPrimitive = select(c for c in CardPrimitive
+                                                if c.name == 'Viper').first()
+        cards: CardList = []
         for i in range(8):
-            new_uuid = uuid4()
-            scout = Card(scout_primitive, new_uuid)
+            new_uuid: UUID = uuid4()
+            scout: Card = Card(scout_primitive, new_uuid)
             cards.append(scout)
         for i in range(2):
-            new_uuid = uuid4()
-            viper = Card(viper_primitive, new_uuid)
+            new_uuid: UUID = uuid4()
+            viper: Card = Card(viper_primitive, new_uuid)
             cards.append(viper)
         return cards
 
@@ -249,7 +254,7 @@ class CardPrimitive(db.Entity):
 
 
 @db_session
-def _populate_factions():
+def _populate_factions() -> List[FactionPrimitive]:
     """Populates the entries in the FactionPrimitives table
 
     Returns
@@ -257,13 +262,13 @@ def _populate_factions():
     [FactionPrimitive]
         The list of FactionPrimitive entities created
     """
-    factions = [FactionPrimitive(name=f.value) for f in CardFaction]
+    factions: List[FactionPrimitive] = [FactionPrimitive(name=f.value) for f in CardFaction]
     commit()
     return factions
 
 
 @db_session
-def _populate_actions():
+def _populate_actions() -> List[ActionPrimitive]:
     """Populates the entries in the ActionPrimitives table
 
     Returns
@@ -271,13 +276,13 @@ def _populate_actions():
     [ActionPrimitive]
         The list of ActionPrimitive entities created
     """
-    actions = [ActionPrimitive(name=a.name) for a in CardAction]
+    actions: List[ActionPrimitive] = [ActionPrimitive(name=a.name) for a in CardAction]
     commit()
     return actions
 
 
 @db_session
-def _populate_targets():
+def _populate_targets() -> List[TargetPrimitive]:
     """Populates the entries in the TargetPrimitives table
 
     Returns
@@ -285,12 +290,14 @@ def _populate_targets():
     [TargetPrimitive]
         The list of TargetPrimitives created
     """
-    targets = [TargetPrimitive(name=t.name) for t in CardTarget]
+    targets: List[TargetPrimitive] = [TargetPrimitive(name=t.name) for t in CardTarget]
     commit()
     return targets
 
 
-def _populate_enums():
+def _populate_enums() -> Tuple[List[ActionPrimitive],
+                               List[FactionPrimitive],
+                               List[TargetPrimitive]]:
     action_entities = _populate_actions()
     faction_entities = _populate_factions()
     target_entities = _populate_targets()
@@ -298,10 +305,10 @@ def _populate_enums():
 
 
 @db_session
-def _populate_db():
+def _populate_db() -> None:
     """Populates the tables in ``realms-cards.sqlite`` from the data in ``cards.json``
     """
-    json_string = resource_string('realms.resources', 'cards.json')
+    json_string: str = resource_string('realms.resources', 'cards.json')
     json_cards = json.loads(json_string)
     actions, factions, targets = _populate_enums()
     for j in json_cards:
@@ -311,7 +318,7 @@ def _populate_db():
 
 
 @db_session
-def _populate_card(card, actions, factions, targets):
+def _populate_card(card, actions, factions, targets) -> CardPrimitive:
     """Creates a single CardPrimitive entity from a JSON object
 
     Returns
@@ -319,26 +326,26 @@ def _populate_card(card, actions, factions, targets):
     CardPrimitive
         The CardPrimitive entity that was created
     """
-    card_faction = next(f for f in factions if f.name == card['faction'])
-    card_effects = _populate_effects(card['effects'], targets, actions)
-    card_ally_effects = _populate_effects(card['ally'], targets, actions)
-    card_scrap_effects = _populate_effects(card['scrap'], targets, actions)
-    populated_card = CardPrimitive(name=card['name'],
-                                   faction=card_faction,
-                                   simplified=_str_to_bool(card['simplified']),
-                                   base=_str_to_bool(card['base']),
-                                   outpost=_str_to_bool(card['outpost']),
-                                   defense=int(card['defense']),
-                                   cost=int(card['cost']),
-                                   count=int(card['count']),
-                                   effects=card_effects,
-                                   ally=card_ally_effects,
-                                   scrap=card_scrap_effects)
+    card_faction: FactionPrimitive = next(f for f in factions if f.name == card['faction'])
+    card_effects: List[EffectPrimitive] = _populate_effects(card['effects'], targets, actions)
+    card_ally_effects: List[EffectPrimitive] = _populate_effects(card['ally'], targets, actions)
+    card_scrap_effects: List[EffectPrimitive] = _populate_effects(card['scrap'], targets, actions)
+    populated_card: CardPrimitive = CardPrimitive(name=card['name'],
+                                                  faction=card_faction,
+                                                  simplified=_str_to_bool(card['simplified']),
+                                                  base=_str_to_bool(card['base']),
+                                                  outpost=_str_to_bool(card['outpost']),
+                                                  defense=int(card['defense']),
+                                                  cost=int(card['cost']),
+                                                  count=int(card['count']),
+                                                  effects=card_effects,
+                                                  ally=card_ally_effects,
+                                                  scrap=card_scrap_effects)
     return populated_card
 
 
 @db_session
-def _populate_effects(effect_list, targets, actions):
+def _populate_effects(effect_list, targets, actions) -> List[EffectPrimitive]:
     """Creates a list of EffectsPrimitive entities from a list of JSON objects
 
     Returns
@@ -346,18 +353,18 @@ def _populate_effects(effect_list, targets, actions):
     [EffectPrimitive]
         The list of effects created from the list of JSON objects
     """
-    effects = []
+    effects: List[CardEffect] = []
     for effect in effect_list:
-        e_target = next(t for t in targets if t.name == effect['target'].upper())
-        e_action = next(a for a in actions if a.name == effect['action'].upper())
-        populated_effect = EffectPrimitive(target=e_target,
-                                           action=e_action,
-                                           value=int(effect['value']))
+        e_target: TargetPrimitive = next(t for t in targets if t.name == effect['target'].upper())
+        e_action: ActionPrimitive = next(a for a in actions if a.name == effect['action'].upper())
+        populated_effect: EffectPrimitive = EffectPrimitive(target=e_target,
+                                                            action=e_action,
+                                                            value=int(effect['value']))
         effects.append(populated_effect)
     return effects
 
 
-def _str_to_bool(string):
+def _str_to_bool(string: str) -> bool:
     """Converts "true" to ``True`` and "false" to ``False``
     """
     return True if string == 'true' else False

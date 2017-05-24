@@ -6,6 +6,11 @@
 """
 
 from random import shuffle
+from typing import List, Union
+from .cards import Card
+from .cardrepo import CardRepo
+
+CardList = List[Card]
 
 
 class Hand(object):
@@ -119,19 +124,19 @@ class MainDeck(object):
     cardrepo : CardRepo
         The repository from which the cards are obtained
     """
-    def __init__(self, cardrepo):
-        self._repo = cardrepo
-        self._cards = self._repo.main_deck_cards()
+    def __init__(self, cardrepo: CardRepo):
+        self._repo: CardRepo = cardrepo
+        self._cards: CardList = self._repo.main_deck_cards()
         shuffle(self._cards)
         return
 
-    def next_card(self):
+    def next_card(self) -> Union[Card, None]:
         """Produces the next card from the main deck
 
         Returns
         -------
         Card
-            A card from the top of the main deck
+            A card from the top of the main deck (``None`` if no cards remain)
 
         Note
         ----
