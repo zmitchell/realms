@@ -47,16 +47,16 @@ class Card(object):
     different UUIDs
     """
     def __init__(self, card_primitive, uuid):
-        self.uuid = uuid
-        self.name = card_primitive.name
-        self.faction = CardFaction.from_primitive(card_primitive.faction)
-        self.base = card_primitive.base
-        self.outpost = card_primitive.outpost
-        self.defense = card_primitive.defense
-        self.cost = card_primitive.cost
-        self.effects_basic = [CardEffect(e) for e in card_primitive.effects]
-        self.effects_ally = [CardEffect(e) for e in card_primitive.ally]
-        self.effects_scrap = [CardEffect(e) for e in card_primitive.scrap]
+        self.uuid: UUID = uuid
+        self.name: str = card_primitive.name
+        self.faction: CardFaction = CardFaction.from_primitive(card_primitive.faction)
+        self.base: bool = card_primitive.base
+        self.outpost: bool = card_primitive.outpost
+        self.defense: int = card_primitive.defense
+        self.cost: int = card_primitive.cost
+        self.effects_basic: [CardEffect] = [CardEffect(e) for e in card_primitive.effects]
+        self.effects_ally: [CardEffect] = [CardEffect(e) for e in card_primitive.ally]
+        self.effects_scrap: [CardEffect] = [CardEffect(e) for e in card_primitive.scrap]
         return
 
 
@@ -83,13 +83,13 @@ class CardFaction(Enum):
     """
 
     @classmethod
-    def from_primitive(cls, primitive):
+    def from_primitive(cls, primitive) -> 'CardFaction':
         """Creates the corresponding ``CardFaction`` instance from a
         ``FactionPrimitive`` instance
         """
         return next(f for f in cls if f.value == primitive.name)
 
-    def __str__(self):
+    def __str__(self) -> str:
         """
         Display string representation of the faction
 
@@ -123,9 +123,9 @@ class CardEffect(object):
         The value associated with the action
     """
     def __init__(self, effect_primitive):
-        self.target = CardTarget.from_primitive(effect_primitive.target)
-        self.action = CardAction.from_primitive(effect_primitive.action)
-        self.value = effect_primitive.value
+        self.target: CardTarget = CardTarget.from_primitive(effect_primitive.target)
+        self.action: CardAction = CardAction.from_primitive(effect_primitive.action)
+        self.value: int = effect_primitive.value
         return
 
 
@@ -136,7 +136,7 @@ class CardTarget(Enum):
     OWNER = 1
 
     @classmethod
-    def from_primitive(cls, primitive):
+    def from_primitive(cls, primitive) -> 'CardTarget':
         return next(t for t in cls if t.name == primitive.name)
 
 
@@ -161,7 +161,7 @@ class CardAction(Enum):
     """Permanently discard a card"""
 
     @classmethod
-    def from_primitive(cls, primitive):
+    def from_primitive(cls, primitive) -> 'CardAction':
         return next(a for a in cls if a.name == primitive.name)
 
 
