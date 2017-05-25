@@ -136,7 +136,7 @@ class MainDeck(object):
         Returns
         -------
         Card
-            A card from the top of the main deck (``None`` if no cards remain)
+            A card from the top of the main deck
 
         Note
         ----
@@ -149,11 +149,18 @@ class MainDeck(object):
 
 
 class TradeRow(object):
+    """Presents the cards that players may acquire
+
+    Parameters
+    ----------
+    maindeck : MainDeck
+        The deck from which the trade row is drawn
+    cardrepo : CardRepo
+        The repository from which cards are obtained
     """
-    blah
-    """
-    def __init__(self):
-        pass
+    def __init__(self, maindeck: MainDeck, cardrepo: CardRepo):
+        self._maindeck: MainDeck = maindeck
+        self._repo: CardRepo = cardrepo
 
     def scrap(self, card):
         """
