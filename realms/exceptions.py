@@ -19,3 +19,31 @@ class MainDeckEmpty(DeckEmpty):
     main deck when no cards are left
     """
     pass
+
+
+class PlayerDeckInitSize(RealmsException):
+    """Raised when attempting to construct a player's deck with the
+    wrong number of cards
+
+    Parameters
+    ----------
+    size : int
+        The number of cards that were used to attempt to construct the deck
+    """
+    def __init__(self, size: int):
+        msg = f"Tried to construct deck with {size} cards"
+        self.msg = msg
+
+
+class PlayerDeckInitContents(RealmsException):
+    """Raised when attempting to construct a player's deck with cards
+    that are not Vipers or Scouts
+
+    Parameters
+    ----------
+    cardname : str
+        The name of the offending card
+    """
+    def __init__(self, cardname: str):
+        msg = f"Deck contained {cardname}"
+        self.msg = msg

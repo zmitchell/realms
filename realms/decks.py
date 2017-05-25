@@ -9,7 +9,12 @@ from random import shuffle
 from typing import List
 from .cards import Card
 from .cardrepo import CardRepo
-from .exceptions import MainDeckEmpty
+from .exceptions import (
+    RealmsException,
+    MainDeckEmpty,
+    PlayerDeckInitSize,
+    PlayerDeckInitContents
+)
 
 CardList = List[Card]
 
@@ -76,21 +81,70 @@ class PlayerDeck(object):
     At any given point in time the player may have three piles of cards: undrawn cards, a
     hand of cards, and a pile of used (discarded) cards. PlayerDeck records which cards are
     in which pile, provides an interface from which a hand of cards can be assembled, and
-    shuffles the deck when necessary. All players begin with the same deck, so no input
-    is required to construct a PlayerDeck.
+    shuffles the deck when necessary.
+
+    Parameters
+    ----------
+    player_cards : List[Card]
+        The list of cards from which the player's starting deck will be constructed
+
+    Raises
+    ------
+    PlayerDeckInitSize
+        Raised when constructing the deck with the wrong number of cards
+    PlayerDeckInitContents
+        Raised when constructing the deck with cards other than Vipers and Scouts
     """
-    def __init__(self):
-        self.discards = self._initialize_deck()
+
+    starting_size = 10
+
+    def __init__(self, player_cards: CardList):
+        try:
+            self._validate_deck_size(player_cards)
+            self._validate_deck_contents(player_cards)
+        except RealmsException:
+            raise
+        self._undrawn: CardList = player_cards
+        shuffle(self._undrawn)
+        self._discards: CardList = []
 
     @staticmethod
-    def _initialize_deck():
-        """
-        Returns the deck that every player starts with
+    def _validate_deck_size(cards: CardList) -> None:
+        """Ensures that the starting deck contains the correct
+        number of cards
 
-        :return A deck containing 8 Scouts and 2 Vipers
-        :rtype [Card]
+        Parameters
+        ----------
+        cards : CardList
+            The tentative starting deck
+
+        Raises
+        ------
+        PlayerDeckInitSize
+            Raised if the tentative starting deck is not the correct size
         """
-        pass
+        if len(cards) != PlayerDeck.starting_size:
+            raise PlayerDeckInitSize(len(cards))
+        return
+
+    @staticmethod
+    def _validate_deck_contents(cards) -> None:
+        """Ensures that the tentative starting deck contains only Vipers and Scouts
+
+        Parameters
+        ----------
+        cards : CardList
+            The tentative starting deck
+
+        Raises
+        ------
+        PlayerDeckInitContents
+            Raised if the tentative starting deck contains cards other than Vipers or Scouts
+        """
+        for c in cards:
+            if (c.name != 'Viper') and (c.name != 'Scout'):
+                raise PlayerDeckInitContents(c.name)
+        return
 
     def _discard(self, card):
         """
