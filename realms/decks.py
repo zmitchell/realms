@@ -6,9 +6,10 @@
 """
 
 from random import shuffle
-from typing import List, Union
+from typing import List
 from .cards import Card
 from .cardrepo import CardRepo
+from .exceptions import MainDeckEmpty
 
 CardList = List[Card]
 
@@ -130,7 +131,7 @@ class MainDeck(object):
         shuffle(self._cards)
         return
 
-    def next_card(self) -> Union[Card, None]:
+    def next_card(self) -> Card:
         """Produces the next card from the main deck
 
         Returns
@@ -138,14 +139,15 @@ class MainDeck(object):
         Card
             A card from the top of the main deck
 
-        Note
-        ----
-        Returns ``None`` when there are no cards remaining
+        Raises
+        ------
+        MainDeckEmpty
+            Raised when attempting to draw a card when the deck is empty
         """
         if len(self._cards) > 0:
             return self._cards.pop()
         else:
-            return None
+            raise MainDeckEmpty
 
 
 class TradeRow(object):

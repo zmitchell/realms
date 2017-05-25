@@ -1,5 +1,7 @@
 from pytest import fixture
+from pytest import raises as ptraises
 from realms.decks import MainDeck
+from realms.exceptions import MainDeckEmpty
 
 
 @fixture
@@ -13,9 +15,9 @@ def test_maindeck_shuffle_order(maindeck, repo):
     assert unshuffled != shuffled
 
 
-def test_maindeck_returns_none_when_empty(maindeck):
+def test_maindeck_raises_exception_when_empty(maindeck):
     num_cards = len(maindeck._cards)
     for i in range(num_cards):
-        _ = maindeck.next_card()
-    one_more = maindeck.next_card()
-    assert one_more is None
+        maindeck.next_card()
+    with ptraises(MainDeckEmpty):
+        maindeck.next_card()
