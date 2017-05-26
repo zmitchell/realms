@@ -146,7 +146,6 @@ class PlayerDeck(object):
                 raise PlayerDeckInitContents(c.name)
         return
 
-    def _discard(self, card):
     def _refill_undrawn(self) -> None:
         """Refills the undrawn pile with cards from the discard pile
 
@@ -160,12 +159,16 @@ class PlayerDeck(object):
         self._discards: CardList = []
         return
 
-        Sends a card to the discard pile
+    def discard(self, card: Card) -> None:
+        """Sends the card to the discard pile
 
-        :param card: The card to discard
-        :type card: Card
+        Parameters
+        ----------
+        card : Card
+            The card to send to the discard pile
         """
-        pass
+        self._discards.append(card)
+        return
 
     def draw(self, num=5):
         """

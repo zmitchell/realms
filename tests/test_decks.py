@@ -65,3 +65,10 @@ def test_playerdeck_undrawn_refilled(playerdeck):
     playerdeck._refill_undrawn()
     assert len(playerdeck._undrawn) == 10
     assert len(playerdeck._discards) == 0
+
+
+def test_playerdeck_discard(playerdeck):
+    card = playerdeck._undrawn.pop()
+    playerdeck.discard(card)
+    assert card not in playerdeck._undrawn
+    assert card in playerdeck._discards
