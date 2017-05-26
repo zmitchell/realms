@@ -52,3 +52,16 @@ def test_playerdeck_init_contents(repo):
     cards = vipers + scouts + others
     with pytest.raises(PlayerDeckInitContents):
         PlayerDeck(cards)
+
+
+@fixture
+def playerdeck(repo):
+    return PlayerDeck(repo.player_deck_cards())
+
+
+def test_playerdeck_undrawn_refilled(playerdeck):
+    playerdeck._discards = playerdeck._undrawn
+    playerdeck._undrawn = []
+    playerdeck._refill_undrawn()
+    assert len(playerdeck._undrawn) == 10
+    assert len(playerdeck._discards) == 0

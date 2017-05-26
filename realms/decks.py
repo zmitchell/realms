@@ -147,7 +147,19 @@ class PlayerDeck(object):
         return
 
     def _discard(self, card):
+    def _refill_undrawn(self) -> None:
+        """Refills the undrawn pile with cards from the discard pile
+
+        Note
+        ----
+        The cards in the discard pile are shuffled before being placed
+        back into the undrawn pile
         """
+        self._undrawn: CardList = self._discards
+        shuffle(self._undrawn)  # shuffled in place
+        self._discards: CardList = []
+        return
+
         Sends a card to the discard pile
 
         :param card: The card to discard
