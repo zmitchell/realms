@@ -12,6 +12,7 @@ from .cardrepo import CardRepo
 from .exceptions import (
     RealmsException,
     MainDeckEmpty,
+    PlayerDeckEmpty,
     PlayerDeckInitSize,
     PlayerDeckInitContents
 )
@@ -145,6 +146,34 @@ class PlayerDeck(object):
             if (c.name != 'Viper') and (c.name != 'Scout'):
                 raise PlayerDeckInitContents(c.name)
         return
+
+    def _next_card(self) -> Card:
+        """Produces the next card from the player's deck
+
+        Attempts to draw a card from the top of the undrawn pile. If
+        the undrawn pile is empty, the undrawn pile is replenished from
+        the discard pile and shuffled before attempting to draw a card again.
+        An attempt to draw a card from the undrawn pile while both the undrawn
+        pile and discard pile are empty will raise a ``PlayerDeckEmpty`` exception.
+
+        Returns
+        -------
+        Card
+            A card from the top of the undrawn pile
+
+        Raises
+        ------
+        PlayerDeckEmpty
+            Raised when attempting to draw a card while both undrawn and discard
+            piles are empty
+        """
+        if len(self._undrawn) > 0:
+            return self._undrawn.pop()
+        elif len(self._discards) > 0:
+            self._refill_undrawn()
+            return self._undrawn.pop()
+        else:
+            raise PlayerDeckEmpty
 
     def _refill_undrawn(self) -> None:
         """Refills the undrawn pile with cards from the discard pile

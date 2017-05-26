@@ -21,6 +21,13 @@ class MainDeckEmpty(DeckEmpty):
     pass
 
 
+class PlayerDeckEmpty(DeckEmpty):
+    """Raised when attempting to draw a card from the player's
+    undrawn pile
+    """
+    pass
+
+
 class PlayerDeckInitSize(RealmsException):
     """Raised when attempting to construct a player's deck with the
     wrong number of cards

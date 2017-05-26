@@ -3,6 +3,7 @@ from pytest import fixture
 from realms.decks import MainDeck, PlayerDeck
 from realms.exceptions import (
     MainDeckEmpty,
+    PlayerDeckEmpty,
     PlayerDeckInitSize,
     PlayerDeckInitContents
 )
@@ -72,3 +73,28 @@ def test_playerdeck_discard(playerdeck):
     playerdeck.discard(card)
     assert card not in playerdeck._undrawn
     assert card in playerdeck._discards
+
+
+def test_playerdeck_next_card_removed_from_undrawn(playerdeck):
+    card = playerdeck._next_card()
+    assert card not in playerdeck._undrawn
+
+
+def test_playerdeck_next_card_raises_when_empty(playerdeck):
+    for _ in range(10):
+        playerdeck._next_card()  # empty out the deck
+    with pytest.raises(PlayerDeckEmpty):
+        playerdeck._next_card()
+
+
+@given(n=strats.integers(min_value=1, max_value=10))
+def test_playerdeck_next_card_triggers_refill(playerdeck, n):
+    for _ in range(n):
+        playerdeck.discard(playerdeck._undrawn.pop())
+    popped = list()
+    for _ in range(10 - n + 1):
+        popped.append(playerdeck._next_card())
+    assert len(playerdeck._undrawn) == (n - 1)
+    # hypothesis doesn't generate a new playerdeck for each example
+    # it generates, so you have to reconstruct the deck at the end
+    playerdeck._undrawn += popped
