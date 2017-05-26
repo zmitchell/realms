@@ -106,7 +106,7 @@ class PlayerDeck(object):
         except RealmsException:
             raise
         self._undrawn: CardList = player_cards
-        shuffle(self._undrawn)
+        shuffle(self._undrawn)  # shuffled in place
         self._discards: CardList = []
 
     @staticmethod
