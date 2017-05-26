@@ -98,3 +98,35 @@ def test_playerdeck_next_card_triggers_refill(playerdeck, n):
     # hypothesis doesn't generate a new playerdeck for each example
     # it generates, so you have to reconstruct the deck at the end
     playerdeck._undrawn += popped
+
+
+@given(n=strats.integers(min_value=1))
+def test_playerdeck_draw_one_at_a_time(playerdeck, n):
+    cards = []
+    for _ in range(n):
+        try:
+            cards += playerdeck.draw(num=1)
+        except IndexError:
+            break
+    if n > 10:
+        assert len(cards) == 10
+    else:
+        assert len(cards) == n
+    playerdeck._undrawn += cards
+
+
+@given(n=strats.integers(min_value=1))
+def test_playerdeck_draw_multiple(playerdeck, n):
+    cards = playerdeck.draw(n)
+    if n > 10:
+        assert len(cards) == 10
+    else:
+        assert len(cards) == n
+    playerdeck._undrawn += cards
+
+
+@given(n=strats.one_of(strats.integers(max_value=0),
+                       strats.floats()))
+def test_playerdeck_draw_bad_values(playerdeck, n):
+    with pytest.raises(IndexError):
+        playerdeck.draw(n)

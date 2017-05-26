@@ -175,6 +175,17 @@ class PlayerDeck(object):
         else:
             raise PlayerDeckEmpty
 
+    @property
+    def cards_remaining(self) -> int:
+        """The total number of cards left in the undrawn and discard piles
+
+        Returns
+        -------
+        int
+            The number of cards left to draw from
+        """
+        return len(self._undrawn) + len(self._discards)
+
     def _refill_undrawn(self) -> None:
         """Refills the undrawn pile with cards from the discard pile
 
@@ -199,14 +210,39 @@ class PlayerDeck(object):
         self._discards.append(card)
         return
 
-    def draw(self, num=5):
-        """
-        Draws the specified number of cards
+    def draw(self, num=5) -> CardList:
+        """Draws the specified number of cards from the undrawn pile
 
-        :return A list containing the specified number of cards
-        :rtype [Card]
+        Parameters
+        ----------
+        num : int (Optional)
+            The number of cards to draw (Default is 5)
+
+        Returns
+        -------
+        List[Card]
+            The list of cards that were drawn
+
+        Raises
+        ------
+        IndexError
+            Raised if no cards are left to draw, or the number of cards requested
+            is not a positive integer
+
+        Note
+        ----
+        If there are cards remaining in the deck but there are fewer cards than
+        were requested, then as many cards as possible are returned.
         """
-        pass
+        if (num <= 0) or (self.cards_remaining == 0) or (not isinstance(num, int)):
+            raise IndexError
+        cards: CardList = []
+        for _ in range(num):
+            try:
+                cards.append(self._next_card())
+            except PlayerDeckEmpty:
+                break
+        return cards
 
     def _scrap(self, card):
         """
