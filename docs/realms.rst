@@ -1,16 +1,15 @@
-==============
 realms package
 ==============
 
 Subpackages
-===========
+-----------
 
 .. toctree::
 
     realms.resources
 
 Submodules
-==========
+----------
 
 realms\.cardrepo module
 -----------------------
@@ -36,10 +35,27 @@ realms\.decks module
     :undoc-members:
     :show-inheritance:
 
+realms\.exceptions module
+-------------------------
+
+.. automodule:: realms.exceptions
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 realms\.player module
 ---------------------
 
 .. automodule:: realms.player
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: realms
     :members:
     :undoc-members:
     :show-inheritance:
