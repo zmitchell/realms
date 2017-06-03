@@ -92,3 +92,4 @@ ENV/
 \.idea/
 
 realms/realms-cards\.sqlite
+.DS_Store
