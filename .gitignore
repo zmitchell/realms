@@ -93,3 +93,5 @@ ENV/
 
 realms/realms-cards\.sqlite
 .DS_Store
+
+*.sublime-workspace
