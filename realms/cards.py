@@ -20,7 +20,7 @@ class Card(object):
 
     Attributes
     ----------
-    uuid : UUID
+    uuid : str
         A unique identifier for this instance of this card
     name : str
         A display name for the card
@@ -47,7 +47,7 @@ class Card(object):
     different UUIDs
     """
     def __init__(self, card_primitive, uuid):
-        self.uuid: UUID = uuid
+        self.uuid: str = uuid
         self.name: str = card_primitive.name
         self.faction: CardFaction = CardFaction.from_primitive(card_primitive.faction)
         self.base: bool = card_primitive.base

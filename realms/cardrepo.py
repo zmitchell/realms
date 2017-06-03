@@ -89,7 +89,7 @@ class CardRepo(object):
             The card that was requested
         """
         primitive: CardPrimitive = select(c for c in CardPrimitive if c.name == cardname).first()
-        new_uuid: UUID = uuid4()
+        new_uuid: str = uuid4().hex
         card: Card = Card(primitive, new_uuid)
         return card
 
@@ -114,7 +114,7 @@ class CardRepo(object):
         cards: CardList = []
         for p in primitives:
             for i in range(p.count):
-                new_uuid: UUID = uuid4()
+                new_uuid: str = uuid4().hex
                 card: Card = Card(p, new_uuid)
                 cards.append(card)
         return cards
@@ -138,11 +138,11 @@ class CardRepo(object):
                                                 if c.name == 'Viper').first()
         cards: CardList = []
         for i in range(8):
-            new_uuid: UUID = uuid4()
+            new_uuid: str = uuid4().hex
             scout: Card = Card(scout_primitive, new_uuid)
             cards.append(scout)
         for i in range(2):
-            new_uuid: UUID = uuid4()
+            new_uuid: str = uuid4().hex
             viper: Card = Card(viper_primitive, new_uuid)
             cards.append(viper)
         return cards

@@ -158,15 +158,15 @@ def test_traderow_available_cards(traderow):
 
 
 def test_traderow_acquire_explorer(traderow):
-    exp_uuid = traderow.explorer.uuid.hex
+    exp_uuid = traderow.explorer.uuid
     card = traderow.acquire(exp_uuid)
-    assert exp_uuid == card.uuid.hex
+    assert exp_uuid == card.uuid
 
 
 def test_traderow_acquire_card(traderow):
-    card_uuid = traderow.cards[0].uuid.hex
+    card_uuid = traderow.cards[0].uuid
     card = traderow.acquire(card_uuid)
-    assert card_uuid == card.uuid.hex
+    assert card_uuid == card.uuid
 
 
 @given(s=strats.text())
@@ -176,13 +176,13 @@ def test_traderow_acquire_invalid_uuid(traderow, s):
 
 
 def test_traderow_scrap_explorer(traderow):
-    exp_uuid = traderow.explorer.uuid.hex
+    exp_uuid = traderow.explorer.uuid
     traderow.scrap(exp_uuid)
-    assert exp_uuid != traderow.explorer.uuid.hex
+    assert exp_uuid != traderow.explorer.uuid
 
 
 def test_traderow_scrap_card(traderow):
-    card_uuid = traderow.cards[0].uuid.hex
+    card_uuid = traderow.cards[0].uuid
     traderow.scrap(card_uuid)
-    uuids = [c.uuid.hex for c in traderow.available]
+    uuids = [c.uuid for c in traderow.available]
     assert card_uuid not in uuids

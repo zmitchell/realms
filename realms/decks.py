@@ -362,11 +362,11 @@ class TradeRow(object):
             Raised when the UUID of the requested card is not found
             in the list of available cards
         """
-        cards_bools = [c.uuid.hex == uuid for c in self.cards]
+        cards_bools = [c.uuid == uuid for c in self.cards]
         if True in cards_bools:
             i = cards_bools.index(True)
             return self._cards.pop(i)
-        elif self.explorer.uuid.hex == uuid:
+        elif self.explorer.uuid == uuid:
             card = self._explorer
             self._explorer = None
             return card
@@ -381,11 +381,11 @@ class TradeRow(object):
         uuid : str
             The UUID of the card to remove
         """
-        cards_bools = [c.uuid.hex == uuid for c in self.cards]
+        cards_bools = [c.uuid == uuid for c in self.cards]
         if True in cards_bools:
             i = cards_bools.index(True)
             del self._cards[i]
-        elif self.explorer.uuid.hex == uuid:
+        elif self.explorer.uuid == uuid:
             self._explorer = None
         else:
             raise UUIDNotFoundError
