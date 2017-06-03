@@ -14,7 +14,8 @@ from .exceptions import (
     MainDeckEmpty,
     PlayerDeckEmpty,
     PlayerDeckInitSize,
-    PlayerDeckInitContents
+    PlayerDeckInitContents,
+    UUIDNotFoundError
 )
 
 CardList = List[Card]
@@ -297,21 +298,95 @@ class TradeRow(object):
     def __init__(self, maindeck: MainDeck, cardrepo: CardRepo):
         self._maindeck: MainDeck = maindeck
         self._repo: CardRepo = cardrepo
+        self._explorer = None
+        self._cards = []
 
-    def scrap(self, card):
-        """
-        Permanently removes a card from the trade row
-        """
-        pass
+    @property
+    def available(self) -> CardList:
+        """Produces the list of all cards available for purchase
 
-    def add_card(self, card):
+        Returns
+        -------
+        List[Card]
+            The list of cards available for purchase
         """
-        Adds a card to the trade row
-        """
-        pass
+        return self.cards + [self.explorer]
 
-    def make_explorer(self):
+    @property
+    def cards(self) -> CardList:
+        """Produces the list of cards available for purchase
+        from the main deck
+
+        Returns
+        -------
+        List[Card]
+            The list of available cards from the main deck
         """
-        Generates a new Explorer card
+        while len(self._cards) < 5:
+            try:
+                card: Card = self._maindeck.next_card()
+            except MainDeckEmpty:
+                break
+            self._cards.append(card)
+        return self._cards
+
+    @property
+    def explorer(self) -> Card:
+        """Produces the current Explorer available for purchase
+
+        Returns
+        -------
+        Card
+            The current Explorer
         """
-        pass
+        if self._explorer is None:
+            self._explorer: Card = self._repo.new_explorer()
+        return self._explorer
+
+    def acquire(self, uuid: str) -> Card:
+        """Produces the card with the specified UUID
+
+        Parameters
+        ----------
+        uuid : str
+            The UUID of the card the player wishes to acquire
+
+        Returns
+        -------
+        Card
+            The card with the specified UUID
+
+        Raises
+        ------
+        UUIDNotFoundError
+            Raised when the UUID of the requested card is not found
+            in the list of available cards
+        """
+        cards_bools = [c.uuid.hex == uuid for c in self.cards]
+        if True in cards_bools:
+            i = cards_bools.index(True)
+            return self._cards.pop(i)
+        elif self.explorer.uuid.hex == uuid:
+            card = self._explorer
+            self._explorer = None
+            return card
+        else:
+            raise UUIDNotFoundError
+
+    def scrap(self, uuid: str) -> None:
+        """Permanently removes a card from the trade row
+
+        Parameters
+        ----------
+        uuid : str
+            The UUID of the card to remove
+        """
+        cards_bools = [c.uuid.hex == uuid for c in self.cards]
+        if True in cards_bools:
+            i = cards_bools.index(True)
+            del self._cards[i]
+        elif self.explorer.uuid.hex == uuid:
+            self._explorer = None
+        else:
+            raise UUIDNotFoundError
+        return

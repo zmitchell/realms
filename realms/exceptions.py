@@ -54,3 +54,9 @@ class PlayerDeckInitContents(RealmsException):
     def __init__(self, cardname: str):
         msg = f"Deck contained {cardname}"
         self.msg = msg
+
+
+class UUIDNotFoundError(RealmsException):
+    """Raised when a requested UUID is not found
+    """
+    pass

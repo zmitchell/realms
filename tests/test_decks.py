@@ -1,11 +1,12 @@
 import pytest
 from pytest import fixture
-from realms.decks import MainDeck, PlayerDeck
+from realms.decks import MainDeck, PlayerDeck, TradeRow
 from realms.exceptions import (
     MainDeckEmpty,
     PlayerDeckEmpty,
     PlayerDeckInitSize,
-    PlayerDeckInitContents
+    PlayerDeckInitContents,
+    UUIDNotFoundError
 )
 from hypothesis import given, assume
 import hypothesis.strategies as strats
@@ -125,8 +126,63 @@ def test_playerdeck_draw_multiple(playerdeck, n):
     playerdeck._undrawn += cards
 
 
-@given(n=strats.one_of(strats.integers(max_value=0),
-                       strats.floats()))
+@given(n=strats.one_of(strats.integers(max_value=0), strats.floats()))
 def test_playerdeck_draw_bad_values(playerdeck, n):
     with pytest.raises(IndexError):
         playerdeck.draw(n)
+
+
+@fixture
+def traderow(maindeck, repo):
+    return TradeRow(maindeck, repo)
+
+
+def test_traderow_explorer(traderow):
+    explorer = traderow._explorer
+    traderow._explorer = None
+    assert traderow.explorer is not explorer
+
+
+def test_traderow_cards(traderow):
+    assert len(traderow.cards) == 5
+    traderow._cards.pop()
+    assert len(traderow.cards) == 5
+
+
+def test_traderow_available_cards(traderow):
+    assert len(traderow.available) == 6
+    traderow._explorer = None
+    assert len(traderow.available) == 6
+    traderow._cards.pop()
+    assert len(traderow.available) == 6
+
+
+def test_traderow_acquire_explorer(traderow):
+    exp_uuid = traderow.explorer.uuid.hex
+    card = traderow.acquire(exp_uuid)
+    assert exp_uuid == card.uuid.hex
+
+
+def test_traderow_acquire_card(traderow):
+    card_uuid = traderow.cards[0].uuid.hex
+    card = traderow.acquire(card_uuid)
+    assert card_uuid == card.uuid.hex
+
+
+@given(s=strats.text())
+def test_traderow_acquire_invalid_uuid(traderow, s):
+    with pytest.raises(UUIDNotFoundError):
+        traderow.acquire(s)
+
+
+def test_traderow_scrap_explorer(traderow):
+    exp_uuid = traderow.explorer.uuid.hex
+    traderow.scrap(exp_uuid)
+    assert exp_uuid != traderow.explorer.uuid.hex
+
+
+def test_traderow_scrap_card(traderow):
+    card_uuid = traderow.cards[0].uuid.hex
+    traderow.scrap(card_uuid)
+    uuids = [c.uuid.hex for c in traderow.available]
+    assert card_uuid not in uuids
