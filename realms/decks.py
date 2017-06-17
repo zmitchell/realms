@@ -7,7 +7,13 @@
 
 from random import shuffle
 from typing import List
-from .cards import Card
+from .cards import (
+    Card,
+    CardFaction,
+    CardEffect,
+    CardAction,
+    CardTarget
+)
 from .cardrepo import CardRepo
 from .exceptions import (
     RealmsException,
@@ -15,65 +21,23 @@ from .exceptions import (
     PlayerDeckEmpty,
     PlayerDeckInitSize,
     PlayerDeckInitContents,
-    UUIDNotFoundError
+    UUIDNotFoundError,
+    HandInitError
 )
+from collections import Counter
+from typing import NamedTuple
 
 CardList = List[Card]
+EffectList = List[CardEffect]
+FactionList = List[CardFaction]
 
 
-class Hand(object):
-    """
-    The player's hand of cards
-
-    Contains a collection of cards, each of which provides one or more effects.
-    Some cards may be bases, and thus will not be discarded after being played.
-
-    :param cards: Cards drawn by the player
-    :type cards: [Card]
-    :param existing_bases: Bases that were played previously and have not been destroyed
-    :type existing_bases: [Card]
-
-    .. note:: INCOMPLETE
-    """
-    def __init__(self, cards, existing_bases):
-        self._cards = cards
-        self._existing_bases = existing_bases
-        self._effects = self._aggregate_effects(self._cards + self._existing_bases)
-        return
-
-    def _aggregate_effects(self, cards):
-        """
-        Returns a list of effects provided by a list of cards
-
-        Examines each card and extracts the relevant effects that it provides.
-        Ally abilities are extracted if allies exist in the hand of cards.
-
-        :param cards: The cards whose effects will be aggregated
-        :type cards: [Card]
-        :return A list of effects provided by the cards
-        :rtype [CardEffect]
-        """
-        pass
-
-    def _factions_with_allies(self, cards):
-        """
-        Returns a list of factions that appear more than once in the hand
-
-        :param cards: The cards to check for allies
-        :type cards: [Card]
-        :return A list of factions with allies present in the hand
-        :rtype [Faction]
-        """
-        pass
-
-    def _scrap(self, card):
-        """
-        Permanently removes a card from the player's deck
-
-        :param card: The card to permanently remove
-        :type card: Card
-        """
-        pass
+EffectRecord = NamedTuple('EffectRecord', [
+                          ('target', CardTarget),
+                          ('action', CardAction),
+                          ('value', int),
+                          ('uuid', str),
+                          ('provider', str)])
 
 
 class PlayerDeck(object):
@@ -390,3 +354,91 @@ class TradeRow(object):
         else:
             raise UUIDNotFoundError
         return
+
+
+class Hand(object):
+    """The player's hand of cards
+
+    A Hand is made from a list of cards drawn from the undrawn pile of the player's deck,
+    as well as any bases that were played previously and have not been destroyed.
+
+    The processing of cards into a collection of effects is a multi-step process:
+
+    1. The basic effects are pulled from each card
+    2. The factions are tallied up to see which cards may activate their ally abilities
+    3. Ally abilities are pulled from each card
+    4. The effects are aggregated by their action types
+    5. Effects are applied in whatever order the user chooses
+    6. If cards are drawn as the result of an action, the effects list is updated
+
+    Parameters
+    ----------
+    to_draw : int
+        The number of cards to draw initially
+    existing_bases : List[Card]
+        Any bases that were played previously and have not yet been destroyed
+    playerdeck : PlayerDeck
+        The player's deck
+    """
+    def __init__(self, to_draw: int, existing_bases: CardList, playerdeck: PlayerDeck):
+        if (to_draw < 0) or (to_draw > 5):
+            raise HandInitError
+        try:
+            drawn: CardList = playerdeck.draw(to_draw)
+        except IndexError:
+            drawn: CardList = []
+        self.cards = drawn + existing_bases
+        self._playerdeck = playerdeck
+        return
+
+    @staticmethod
+    def _collect_basic_effects(cards: List[Card]) -> List[EffectRecord]:
+        """Assembles a list of `EffectRecord`s from the cards in the hand
+        """
+        basic_effects: List[EffectRecord] = []
+        for c in cards:
+            effects: List[CardEffect] = c.effects_basic
+            records = [EffectRecord(target=e.target,
+                                    action=e.action,
+                                    value=e.value,
+                                    uuid=e.uuid,
+                                    provider=c.uuid)
+                       for e in effects]
+            basic_effects += records
+        return records
+
+    @staticmethod
+    def _collect_ally_factions(cards: List[Card]) -> List[CardFaction]:
+        """Assembles a list of factions that should have their ally abilities activated
+        """
+        factions: CardFaction = [c.faction for c in cards]
+        if CardFaction.ALL in factions:
+            return [CardFaction.BLOB, CardFaction.STAR, CardFaction.FEDERATION, CardFaction.MACHINE]
+        counts = Counter(factions)
+        allies: List[CardFaction] = [key for key in counts.keys()
+                                     if counts[key] > 1 and key != CardFaction.UNALIGNED]
+        return allies
+
+    @staticmethod
+    def _collect_ally_effects(cards: List[Card], facs: List[CardFaction]) -> List[EffectRecord]:
+        """Assembles a list of the ally effects that are applicable
+        """
+        ally_effects: List[EffectRecord] = []
+        for c in cards:
+            effects: List[CardEffect] = c.effects_ally
+            records = [EffectRecord(target=e.target,
+                                    action=e.action,
+                                    value=e.value,
+                                    uuid=e.uuid,
+                                    provider=c.uuid)
+                       for e in effects if c.faction in facs]
+            ally_effects += records
+        return ally_effects
+
+    def _collect_effects(self) -> List[EffectRecord]:
+        """Assembles a list of effects provided by the player's hand
+        """
+        basic_effects: List[EffectRecord] = Hand._collect_basic_effects(self.cards)
+        ally_factions: List[CardFaction] = Hand._collect_ally_factions(self.cards)
+        ally_effects: List[EffectRecord] = Hand._collect_ally_effects(self.cards, ally_factions)
+        return basic_effects + ally_effects

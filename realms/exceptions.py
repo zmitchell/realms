@@ -60,3 +60,9 @@ class UUIDNotFoundError(RealmsException):
     """Raised when a requested UUID is not found
     """
     pass
+
+
+class HandInitError(RealmsException):
+    """Raised when attempting to construct a hand from an invalid number of cards
+    """
+    pass

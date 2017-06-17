@@ -1,6 +1,10 @@
 import pytest
 from pytest import fixture
-from realms.decks import MainDeck, PlayerDeck, TradeRow
+from realms.decks import (
+    MainDeck,
+    PlayerDeck,
+    TradeRow
+)
 from realms.exceptions import (
     MainDeckEmpty,
     PlayerDeckEmpty,

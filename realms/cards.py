@@ -7,6 +7,7 @@
 
 from enum import Enum
 from functools import total_ordering
+from uuid import uuid4
 
 
 class Card(object):
@@ -131,6 +132,7 @@ class CardEffect(object):
         self.target: CardTarget = CardTarget.from_primitive(effect_primitive.target)
         self.action: CardAction = CardAction.from_primitive(effect_primitive.action)
         self.value: int = effect_primitive.value
+        self.uuid = uuid4().hex
         return
 
 
