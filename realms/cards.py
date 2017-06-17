@@ -6,6 +6,7 @@
 """
 
 from enum import Enum
+from functools import total_ordering
 
 
 class Card(object):
@@ -106,6 +107,10 @@ class CardFaction(Enum):
         """
         return self.value
 
+    @total_ordering
+    def __lt__(self, other) -> bool:
+        return self.name < other.name
+
 
 class CardEffect(object):
     """A single effect provided by a card
@@ -139,6 +144,10 @@ class CardTarget(Enum):
     def from_primitive(cls, primitive) -> 'CardTarget':
         return next(t for t in cls if t.name == primitive.name)
 
+    @total_ordering
+    def __lt__(self, other) -> bool:
+        return self.name < other.name
+
 
 class CardAction(Enum):
     """The type of action that an effect entails
@@ -163,5 +172,9 @@ class CardAction(Enum):
     @classmethod
     def from_primitive(cls, primitive) -> 'CardAction':
         return next(a for a in cls if a.name == primitive.name)
+
+    @total_ordering
+    def __lt__(self, other):
+        return self.name < other.name
 
 
